@@ -1,0 +1,46 @@
+@import 'bootstrap';
+@import 'ember-paper';
+@import 'https://fonts.googleapis.com/css?family=Pacifico';
+
+$mainColour: #49ccdf;
+
+.login_back{
+  background:url('https://static.pexels.com/photos/136739/pexels-photo-136739.jpeg') fixed center center;
+  background-size:cover;
+  height:100vh;
+  position: absolute;
+  width: 100%;
+}
+.login_form{
+  position:absolute;
+  top:0;
+  .btn-primary {
+    color: #fff;
+    background-color: $mainColour;
+    padding: 1em;
+    border: none;
+    padding: 1em 2em;
+    width: 100%;
+    
+    &:hover, &:focus{
+      outline:0;
+    }
+  }
+  .logo{
+    font-family: 'Pacifico', cursive;
+    color:white;
+    font-size:6em;
+    margin-top:1em;
+    margin-bottom:0.5em;
+    line-height: 0.6em;
+    small{
+      font-size:20%;
+    }
+  }
+  .form-control{
+    margin: 1em 0;
+    border: none;
+    border-radius: 5px !important;
+    padding: 1.5em;
+  }
+}

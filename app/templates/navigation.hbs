@@ -1,0 +1,14 @@
+{{#if application.showNav}}
+  {{! without contextual components }}
+  {{#paper-toolbar}}
+    {{#paper-toolbar-tools}}
+      {{#paper-button iconButton=true}}
+        {{paper-icon "menu"}}
+      {{/paper-button}}
+      <span class="flex"></span>
+      {{#paper-button iconButton=true}}
+        {{paper-icon "more_vert"}}
+      {{/paper-button}}
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+{{/if}}
