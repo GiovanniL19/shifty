@@ -2,10 +2,27 @@
 @import 'ember-paper';
 @import 'https://fonts.googleapis.com/css?family=Pacifico';
 
-$mainColour: #49ccdf;
-
+$mainColour: #006399;
+*{
+  padding:0;
+  margin:0;
+}
+.message_alert {
+  background: #ff5151;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  min-height: 3em;
+  color: white;
+  text-align: center;
+  padding: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 .login_back{
-  background:url('https://static.pexels.com/photos/136739/pexels-photo-136739.jpeg') fixed center center;
+  //background:url('https://static.pexels.com/photos/136739/pexels-photo-136739.jpeg') fixed center center;
+  background:url('https://static.pexels.com/photos/110143/pexels-photo-110143-large.jpeg') fixed center center;
   background-size:cover;
   height:100vh;
   position: absolute;
@@ -15,13 +32,12 @@ $mainColour: #49ccdf;
   position:absolute;
   top:0;
   .btn-primary {
-    color: #fff;
-    background-color: $mainColour;
+    background-color: white;
     padding: 1em;
-    border: none;
+    color: $mainColour;
     padding: 1em 2em;
     width: 100%;
-    
+    box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.19);
     &:hover, &:focus{
       outline:0;
     }
@@ -30,7 +46,7 @@ $mainColour: #49ccdf;
     font-family: 'Pacifico', cursive;
     color:white;
     font-size:6em;
-    margin-top:1em;
+    margin-top:1.5em;
     margin-bottom:0.5em;
     line-height: 0.6em;
     small{

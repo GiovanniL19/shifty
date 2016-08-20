@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 	}.observes('session.isAuthenticated'),
 	actions:{
 		authenticate: function() {
-			var md5Password = md5('j*(XY@^T%&!F%I)' + this.get('password') + 'juxhUGBG@^&DF(A)');
+			/*var md5Password = md5('j*(XY@^T%&!F%I)' + this.get('password') + 'juxhUGBG@^&DF(A)');
 			
       var credentials = {
 				identification: this.get('identification'),
@@ -28,9 +28,8 @@ export default Ember.Controller.extend({
 			
       var authenticator = 'authenticator:token';
 			this.authenticateObserver();
-      this.get('session').authenticate(authenticator, credentials).then(function(){
-      	
-      });
+      this.get('session').authenticate(authenticator, credentials);*/
+      this.transitionToRoute('overview')
     }
 	}
 });

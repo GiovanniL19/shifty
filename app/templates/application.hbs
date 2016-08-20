@@ -1,2 +1,7 @@
 {{render "navigation"}}
 {{outlet}}
+{{#if message}}
+  <div class="message_alert">
+    {{message}}
+  </div>
+{{/if}}
