@@ -1,3 +1,11 @@
+/*
+  Contents
+  
+  1.0 - Login
+  2.0 - Navigation
+  3.0 - Overview
+
+*/
 @import 'bootstrap';
 @import "ember-side-menu";
 
@@ -14,6 +22,8 @@ body{
   font-family: 'Ubuntu', sans-serif;
 }
 
+//1.0
+//Login
 .message_alert {
   background: #ff5151;
   position: fixed;
@@ -35,38 +45,55 @@ body{
   position: fixed;
   width: 100%;
   overflow: scroll;
+  .login_form{
+    position:absolute;
+    top:0;
+    .btn-primary {
+      background-color: white;
+      padding: 1em;
+      color: $mainColour;
+      padding: 1em 2em;
+      width: 100%;
+      box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.19);
+      &:hover, &:focus{
+        outline:0;
+      }
+    }
+    .logo{
+      font-family: 'Pacifico', cursive;
+      color:white;
+      font-size:6em;
+      margin-top:1.5em;
+      margin-bottom:0.5em;
+      line-height: 0.6em;
+      small{
+        font-size:20%;
+      }
+    }
+    .form-control{
+      margin: 1em 0;
+      border: none;
+      border-radius: 5px !important;
+      padding: 1.5em;
+    }
+  }
+  .developer_logo{
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: bold;
+    font-size: 3em;
+    position: absolute;
+    margin-left: -0.5em;
+  }
 }
-.login_form{
-  position:absolute;
-  top:0;
-  .btn-primary {
-    background-color: white;
-    padding: 1em;
-    color: $mainColour;
-    padding: 1em 2em;
-    width: 100%;
-    box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.19);
-    &:hover, &:focus{
-      outline:0;
-    }
-  }
-  .logo{
-    font-family: 'Pacifico', cursive;
-    color:white;
-    font-size:6em;
-    margin-top:1.5em;
-    margin-bottom:0.5em;
-    line-height: 0.6em;
-    small{
-      font-size:20%;
-    }
-  }
-  .form-control{
-    margin: 1em 0;
-    border: none;
-    border-radius: 5px !important;
-    padding: 1.5em;
-  }
+
+//2.0
+//Navigation
+.side-menu{
+  box-shadow:none;
 }
 .nav{
   .account {
@@ -76,8 +103,8 @@ body{
     padding: 1em;
     box-shadow: 1px 1px 7px #9c9c9c;
     padding-top: 2em;
-    margin: 0;
     margin-left: -1px;
+    margin-bottom:1em;
     .profilePicture{
       background: url("https://scontent.xx.fbcdn.net/v/t1.0-9/13015449_1363889360304661_4798637813898539110_n.jpg?oh=2cc894d29ca203798f79a6481780b011&oe=5814BC38");
       background-size: cover;
@@ -89,11 +116,12 @@ body{
       padding: 1.5em;
       font-size: 1.1em;
     }
-    span.icon {
-      margin-right: 1.4em;
-    }
   }
   li{
+    .icon{
+      margin-right: 1em;
+      margin-left: 0.5em;
+    }
     a{
       color: #585858;
       font-size: 1em;
@@ -102,12 +130,45 @@ body{
   }
 }
 .navbar-default{
+  color:white;
   background: $mainColour;
   margin: 0;
   border: 0;
   height: 4em;
+  .title{
+    padding: 0.5em 0;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5em;
+    margin-left:-1em;
+  }
   .side-menu-toggle{
     color:white;
     font-size:1.5em;
   }  
+}
+
+
+//3.0
+//Overview
+.overview {
+  padding: 1em;
+  color: #6d6d6d;
+  .card{
+    padding: 1em;
+    min-height: 5em;
+    border: 1px solid #ccc;
+    margin: 1em 0em;
+    .date{
+      padding: 0.5em;
+      margin-top: 0.4em;
+    }
+    .colourCode{
+      display: block;
+      background: #e26565;
+      border-radius: 100%;
+      width: 2em;
+      height: 2em;
+      margin-top: 0.5em;
+    }
+  }
 }

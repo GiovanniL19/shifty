@@ -1,9 +1,14 @@
 {{#if showNav}}
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      {{#side-menu-toggle}}
-        {{fa-icon "bars"}}
-      {{/side-menu-toggle}}
+      <div class="pull-left">
+        {{#side-menu-toggle}}
+          {{fa-icon "bars"}}
+        {{/side-menu-toggle}}
+      </div>
+      <div class="pull-left title">
+        {{title}}
+      </div>
     </div>
   </nav>
 
@@ -45,7 +50,7 @@
     <li class="divider"></li>
     <li>
       <a {{action "invalidateSession"}}>
-        Logout
+        <span class="icon">{{fa-icon "user"}}</span> Logout
       </a>
     </li>
   </ul>
