@@ -23,9 +23,11 @@ export default Ember.Controller.extend({
   
   getUser: function(){
     let controller = this;
-    this.store.find('user', this.get('userID')).then(function(user){
-      controller.set('user', user);
-    });
+    if(this.get('userID')){
+      this.store.find('user', this.get('userID')).then(function(user){
+        controller.set('user', user);
+      });
+    }
   }.observes('userID'),
   actions: {
     invalidateSession: function(){
