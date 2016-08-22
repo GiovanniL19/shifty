@@ -44,9 +44,9 @@
     
     <li class="divider"></li>
     <li>
-      {{#side-menu-link-to "login"}}
+      <a {{action "invalidateSession"}}>
         Logout
-      {{/side-menu-link-to}}
+      </a>
     </li>
   </ul>
   {{/side-menu}}

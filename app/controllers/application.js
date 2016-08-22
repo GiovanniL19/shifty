@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
   showNav: false,
   message: '',
   messageObserver: function(){
@@ -10,5 +11,11 @@ export default Ember.Controller.extend({
         controller.set('message', '');
       }, 4000);
     }
-  }.observes('message')
+  }.observes('message'),
+  actions: {
+    invalidateSession: function(){
+      this.get('session').invalidate();
+      this.transitionToRoute('login');
+    }
+  }
 });

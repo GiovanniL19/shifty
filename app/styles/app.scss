@@ -31,9 +31,10 @@ body{
   //background:url('https://static.pexels.com/photos/136739/pexels-photo-136739.jpeg') fixed center center;
   background:url('https://static.pexels.com/photos/110143/pexels-photo-110143-large.jpeg') fixed center center;
   background-size:cover;
-  height:100vh;
-  position: absolute;
+  height:100%;
+  position: fixed;
   width: 100%;
+  overflow: scroll;
 }
 .login_form{
   position:absolute;

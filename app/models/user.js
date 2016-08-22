@@ -1,9 +1,16 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  username: DS.attr('string'),
-  firstName: DS.attr('string'),
-  lastName: DS.attr('string'),
-  saltPass: DS.attr('string'),
-  number: DS.attr('string')
+  type: DS.attr('string', {defaultValue: 'user'}),
+  dateCreated: DS.attr('string'),
+  dateModified: DS.attr('string'),
+  identity: MF.fragment('user-identity'),
+  secure: MF.fragment('user-secure'),
+	isAdmin: function(){
+		if(this.get('permission') == 'Admin'){
+			return true;
+		}else{
+			return false;
+		}
+	}.property('permission')
 });

@@ -58,7 +58,7 @@ module.exports = function(environment) {
     authorizer: 'authorizer:token'
   };
   ENV['ember-simple-auth-token'] = {
-		serverTokenEndpoint: 'http://localhost:3002/auth',
+		serverTokenEndpoint: 'http://192.168.0.21:3002/auth',
   };
   
   return ENV;
