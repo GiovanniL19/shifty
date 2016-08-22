@@ -1,12 +1,19 @@
 @import 'bootstrap';
-@import 'ember-paper';
+@import "ember-side-menu";
+
+//Fonts
 @import 'https://fonts.googleapis.com/css?family=Pacifico';
+@import 'https://fonts.googleapis.com/css?family=Ubuntu';
 
 $mainColour: #006399;
 *{
   padding:0;
   margin:0;
 }
+body{
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .message_alert {
   background: #ff5151;
   position: fixed;
@@ -59,4 +66,47 @@ $mainColour: #006399;
     border-radius: 5px !important;
     padding: 1.5em;
   }
+}
+.nav{
+  .account {
+    background: #151515;
+    height: 10em;
+    color: white;
+    padding: 1em;
+    box-shadow: 1px 1px 7px #9c9c9c;
+    padding-top: 2em;
+    margin: 0;
+    margin-left: -1px;
+    .profilePicture{
+      background: url("https://scontent.xx.fbcdn.net/v/t1.0-9/13015449_1363889360304661_4798637813898539110_n.jpg?oh=2cc894d29ca203798f79a6481780b011&oe=5814BC38");
+      background-size: cover;
+      width: 5em;
+      height: 5em;
+      border-radius: 100%;
+    }
+    .name.pull-left {
+      padding: 1.5em;
+      font-size: 1.1em;
+    }
+    span.icon {
+      margin-right: 1.4em;
+    }
+  }
+  li{
+    a{
+      color: #585858;
+      font-size: 1em;
+      padding: 1em;
+    }
+  }
+}
+.navbar-default{
+  background: $mainColour;
+  margin: 0;
+  border: 0;
+  height: 4em;
+  .side-menu-toggle{
+    color:white;
+    font-size:1.5em;
+  }  
 }

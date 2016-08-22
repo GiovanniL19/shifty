@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
       var authenticator = 'authenticator:token';
 			this.authenticateObserver();
       this.get('session').authenticate(authenticator, credentials);*/
-      this.transitionToRoute('overview')
+      this.transitionToRoute('overview');
     }
 	}
 });

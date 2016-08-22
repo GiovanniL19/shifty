@@ -1,14 +1,55 @@
-{{#if application.showNav}}
-  {{! without contextual components }}
-  {{#paper-toolbar}}
-    {{#paper-toolbar-tools}}
-      {{#paper-button iconButton=true}}
-        {{paper-icon "menu"}}
-      {{/paper-button}}
-      <span class="flex"></span>
-      {{#paper-button iconButton=true}}
-        {{paper-icon "more_vert"}}
-      {{/paper-button}}
-    {{/paper-toolbar-tools}}
-  {{/paper-toolbar}}
+{{#if showNav}}
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      {{#side-menu-toggle}}
+        {{fa-icon "bars"}}
+      {{/side-menu-toggle}}
+    </div>
+  </nav>
+
+  {{#side-menu}}
+  <ul class="nav">
+    <div class="account">
+      <div class="profilePicture pull-left">
+      </div>
+      <div class="name pull-left">
+        Giovanni Lenguito
+        <br>
+        <small>Welcome back</small>
+      </div>
+    </div>
+    <li>
+      {{#side-menu-link-to "overview"}}
+        <span class="icon">{{fa-icon "home"}}</span> Overview
+      {{/side-menu-link-to}}
+    </li>
+    
+    <li>
+      {{#side-menu-link-to "overview"}}
+        <span class="icon">{{fa-icon "history"}}</span> History
+      {{/side-menu-link-to}}
+    </li>
+    
+    <li>
+      {{#side-menu-link-to "overview"}}
+        <span class="icon">{{fa-icon "list"}}</span> Upcoming
+      {{/side-menu-link-to}}
+    </li>
+    
+    <li>
+      {{#side-menu-link-to "overview"}}
+        <span class="icon">{{fa-icon "cog"}}</span> Settings
+      {{/side-menu-link-to}}
+    </li>
+    
+    <li class="divider"></li>
+    <li>
+      {{#side-menu-link-to "login"}}
+        Logout
+      {{/side-menu-link-to}}
+    </li>
+  </ul>
+  {{/side-menu}}
+  {{content-backdrop}}
+  
 {{/if}}

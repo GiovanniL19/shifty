@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  setupController: function(controller){
+  setupController: function(controller, model) {
     controller.set('application.showNav', true);
   }
 });
