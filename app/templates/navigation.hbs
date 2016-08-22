@@ -9,18 +9,26 @@
       <div class="pull-left title">
         {{title}}
       </div>
+      
+      <div class="pull-right action">
+        {{#if action.add}}
+        <a>
+          {{fa-icon "plus"}}
+        </a>
+        {{/if}}
+      </div>
     </div>
   </nav>
 
   {{#side-menu}}
   <ul class="nav">
     <div class="account">
-      <div class="profilePicture pull-left">
+      <div class="profilePicture pull-left" style="background:url('{{user.identity.image}}'); background-size:cover;">
       </div>
       <div class="name pull-left">
-        Giovanni Lenguito
+        G{{user.fullName}}
         <br>
-        <small>Welcome back</small>
+        <small>Hey! Hows the shifts?</small>
       </div>
     </div>
     <li>

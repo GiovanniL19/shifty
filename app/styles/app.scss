@@ -106,7 +106,7 @@ body{
     margin-left: -1px;
     margin-bottom:1em;
     .profilePicture{
-      background: url("https://scontent.xx.fbcdn.net/v/t1.0-9/13015449_1363889360304661_4798637813898539110_n.jpg?oh=2cc894d29ca203798f79a6481780b011&oe=5814BC38");
+      background: white;
       background-size: cover;
       width: 5em;
       height: 5em;
@@ -135,6 +135,17 @@ body{
   margin: 0;
   border: 0;
   height: 4em;
+  a{
+    width: 2em;
+    color: white;
+    display: block;
+    text-align: right;
+  }
+  .action{
+    padding: 0.5em 0;
+    font-size: 1.5em;
+    margin-left:-1em;
+  }
   .title{
     padding: 0.5em 0;
     font-family: 'Pacifico', cursive;
