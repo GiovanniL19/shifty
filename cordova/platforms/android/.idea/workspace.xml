@@ -1396,7 +1396,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5887856106000" />
+        <entry key="$PROJECT_DIR$" value="5887868570000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1784,6 +1784,8 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="00d08f965eb0ac03" />
+    <property name="show.do.not.ask.upgrade.gradle" value="false" />
+    <property name="show.do.not.ask.upgrade.gradle.plugin" value="false" />
   </component>
   <component name="RunManager" selected="Android Application.android">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
