@@ -1,1 +1,23 @@
-{{outlet}}
+<div class="add-shift">
+  <h4>Add Your Shift</h4>
+  <br>
+  <div class="input-group">
+    <div class="input-group-addon">{{fa-icon "hashtag"}}</div>
+    {{input type="text" class="form-control" placeholder="Reference" value=reference}}
+  </div>
+  
+  <div class="input-group">
+    <div class="input-group-addon">{{fa-icon "location-arrow"}}</div>
+    {{input type="text" class="form-control" placeholder="Location" value=location}}
+  </div>
+  
+  <div class="input-group">
+    <div class="input-group-addon">{{fa-icon "circle-thin"}}</div>
+    {{input type="text" class="form-control" placeholder="Colour" value=colour}}
+  </div>
+  
+  <div class="input-group">
+    <div class="input-group-addon">{{fa-icon "calendar"}}</div>
+    {{input type="datetime" class="form-control" placeholder="Date" value=date}}
+  </div>
+</div>

@@ -34,6 +34,6 @@ export default Ember.Controller.extend({
       this.get('session').invalidate();
       this.get("sideMenu").close();
       this.transitionToRoute('login');
-    }
+    },
   }
 });
