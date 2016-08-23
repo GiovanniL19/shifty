@@ -12,9 +12,15 @@
       
       <div class="pull-right action">
         {{#if action.add}}
-        {{#link-to 'add-shift'}}
-          {{fa-icon "plus"}}
-        {{/link-to}}
+          {{#link-to 'add-shift'}}
+            {{fa-icon "plus"}}
+          {{/link-to}}
+        {{/if}}
+        
+        {{#if action.save}}
+          <a {{action "saveShift" 'new'}}>
+            {{fa-icon "paper-plane"}}
+          </a>
         {{/if}}
       </div>
     </div>

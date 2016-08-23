@@ -142,6 +142,7 @@ body{
   margin: 0;
   border: 0;
   height: 4em;
+  border-radius: 0;
   a{
     width: 2em;
     color: white;
@@ -193,6 +194,14 @@ body{
 
 //4.0
 //Add Shift
+.top-header{
+  margin-bottom: 2em;
+  background: $mainColour;
+  margin-top: -1em;
+  height: 5em;
+  padding: 1em;
+  color: white;
+}
 .add-shift{
   padding:1em;
   color: #6d6d6d;
@@ -201,9 +210,16 @@ body{
     border: none;
     color: $mainColour;
   }
+  .dateTime{
+    margin-left:3em;
+  }
   .input-group{
     margin-top:1em;
     margin-bottom:5em;
+    &:last-child{
+     margin-bottom:0; 
+     margin-top: -0.5em;
+    }
   }
   .form-control{
     outline: none;

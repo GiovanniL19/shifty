@@ -3,15 +3,25 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   sideMenu: Ember.inject.service(),
-    
+  addShift: Ember.inject.controller(),
+  
   user: null,
   userID: '',
   showNav: false,
   message: '',
   title: 'Overview',
   action: {
-    add: true
+    add: true,
+    save: false,
   },
+  
+  clearAction: function(){
+    this.set('action', {
+      add: false,
+      save: false
+    });
+  },
+  
   messageObserver: function(){
     let controller = this;
     if(this.get('message')){
@@ -35,5 +45,10 @@ export default Ember.Controller.extend({
       this.get("sideMenu").close();
       this.transitionToRoute('login');
     },
+    saveShift: function(type){
+      if(type == 'new'){
+        this.get('addShift').saveShift();
+      }
+    }
   }
 });

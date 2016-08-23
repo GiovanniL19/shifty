@@ -1,23 +1,23 @@
+<div class="top-header">
+  
+</div>
 <div class="add-shift">
-  <h4>Add Your Shift</h4>
-  <br>
   <div class="input-group">
     <div class="input-group-addon">{{fa-icon "hashtag"}}</div>
-    {{input type="text" class="form-control" placeholder="Reference" value=reference}}
+    {{input type="text" class="form-control" placeholder="Reference" value=model.reference}}
   </div>
   
   <div class="input-group">
     <div class="input-group-addon">{{fa-icon "location-arrow"}}</div>
-    {{input type="text" class="form-control" placeholder="Location" value=location}}
+    {{input type="text" class="form-control" placeholder="Location" value=model.location}}
   </div>
   
   <div class="input-group">
     <div class="input-group-addon">{{fa-icon "circle-thin"}}</div>
-    {{input type="text" class="form-control" placeholder="Colour" value=colour}}
+    {{input type="text" class="form-control" placeholder="Colour" value=model.colour}}
   </div>
   
   <div class="input-group">
-    <div class="input-group-addon">{{fa-icon "calendar"}}</div>
-    {{input type="datetime" class="form-control" placeholder="Date" value=date}}
+     {{bs-datetimepicker class="dateTime" date=model.dateTime openOnFocus=true}}
   </div>
 </div>
