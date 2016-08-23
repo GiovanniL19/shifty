@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   application: Ember.inject.controller(),
   session: Ember.inject.service(),
-  identification: '',
-  password: '',
+  identification: 'GiovanniLenguito',
+  password: '123',
   loginAttempt: false,
   message: '',
 
