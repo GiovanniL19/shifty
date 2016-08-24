@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('navigation');
   this.route('overview');
   this.route('add-shift');
+  this.route('history');
 });
 
 export default Router;
