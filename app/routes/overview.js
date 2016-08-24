@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  activate: function(){
+    let controller = this.controllerFor('overview');
+    controller.getWeekData();
+  },
   setupController: function(controller) {
     
     if(controller.get('session.isAuthenticated')){

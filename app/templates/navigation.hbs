@@ -72,6 +72,11 @@
     
     <li class="divider"></li>
     <li>
+      {{#side-menu-link-to "add-shift"}}
+        <span class="icon">{{fa-icon "plus"}}</span> Add Shifts
+      {{/side-menu-link-to}}
+    </li>
+    <li>
       <a {{action "invalidateSession"}}>
         <span class="icon">{{fa-icon "user"}}</span> Logout
       </a>

@@ -7,7 +7,8 @@ export default Ember.Controller.extend({
   sectionOne: true,
   reference: '',
   day: true,
-  time: 0,
+  startTime: 0,
+  endTime: 0 ,
   
   nextAddShift: function(){
     this.set('sectionOne', false);
@@ -28,7 +29,7 @@ export default Ember.Controller.extend({
       var user = this.get('application.user');
       if(user.get('id')){
         
-        if(this.get('reference') && this.get('time')){
+        if(this.get('reference') && this.get('startTime') && this.get('endTime')){
           var dates = this.get('dates');
       
           //date format: Thu Aug 04 2016 00:00:00 GMT+0100 (BST)
@@ -49,7 +50,8 @@ export default Ember.Controller.extend({
               day: controller.get('day'),
               dateTimeStamp: timeStamp,
               dateText: formattedDate,
-              startTime: controller.get('time'),
+              startTime: controller.get('startTime'),
+              endTime: controller.get('endTime'),
               user: user
             });
         

@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   setupController: function(controller) {
     if(controller.get('session.isAuthenticated')){
-      controller.set('application.title', 'Add Shift');
+      controller.set('application.title', 'Add Shifts');
       
       controller.set('application.showNav', true);
       

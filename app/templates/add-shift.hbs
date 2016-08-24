@@ -21,11 +21,19 @@
       <br>
       {{input type="text" class="form-control" placeholder="e.g NHS" value=reference}}
       <br><br>
-      <p>What time do these shifts start?</p>
-      <br>
-      {{input type="time" class="form-control" value=time}}
+      <span class="col-xs-6">
+        <p>Start Time</p>
+        {{input type="time" class="form-control" value=startTime}}
+      </span>
+      <span class="col-xs-6">
+        <p>End Time</p>
+        {{input type="time" class="form-control" value=endTime}}
+      </span>
       <br><br>
-      <button class="btn btn-default" {{action 'saveShifts'}}>Save</button> 
+      <div class="col-xs-12">
+        <br><br>
+        <button class="btn btn-default" {{action 'saveShifts'}}>Save</button> 
+      </div>
     </div>
   {{/liquid-if}}
 </div>

@@ -1,6 +1,17 @@
 <div class="overview">
-  <div class="history_cards">
-    {{#each application.user.shifts as |shift|}}
+  <div class="cards">
+    <div class="lg-card">
+      {{#if nextWeekShifts}}
+        <h2 class="text-center welcome animated pulse" style="background:#ff9a07">{{fa-icon "exclamation"}}</h2>
+        <h4 class="text-center toDo">You Have Shifts Next Week</h4>
+      {{else}}
+          <h2 class="text-center welcome animated pulse" style="background:#4CAF50">{{fa-icon "thumbs-up"}}</h2>
+          <h4 class="text-center toDo">No Shifts coming up!</h4>
+      {{/if}}
+    </div>
+    <hr>
+    <h5>Coming Up</h5>
+    {{#each nextWeekShifts as |shift|}}
       <div class="card">
         <div class="remove col-xs-1" {{action 'removeShift' shift}}>
           {{fa-icon "times"}}
@@ -9,24 +20,55 @@
           <strong>{{shift.dateFormatted}}</strong><br>
           <strong>{{shift.reference}}</strong>
         </div>
-      
+    
         {{#if shift.day}}
           <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#2196F3;">{{fa-icon 'sun-o'}}</span></span>
         {{else}}
           <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#1A237E;">{{fa-icon 'moon-o'}}</span></span>
         {{/if}}
-      
+    
         <div class="date col-xs-3 text-right">
-           {{#if shift.isDone}}<small class="done">DONE</small>{{/if}}
-           {{#if shift.upcoming}}<small class="upcoming">UPCOMING</small>{{/if}}
-
-           <br>Shift: {{shift.startTime}}
+           {{#if shift.upcoming}}<small class="upcoming">COMING UP</small>{{/if}}
+           <br>
+           <p>
+             Start {{shift.startTime}}
+             End {{shift.endTime}}
+           </p>
         </div>
       </div>
-    
     {{else}}
-      <h2 class="text-center welcome">{{fa-icon "bolt"}}</h2>
-      <h4 class="text-center toDo">Lets get started, tap the plus button in the top right to add shifts!</h4>
+      <h6 class="text-center">You have no shifts next week</h6>
+    {{/each}}
+    
+    <hr>
+    <h5>Past Week</h5>
+    {{#each lastWeekShifts as |shift|}}
+      <div class="card lastWeek">
+        <div class="remove col-xs-1" {{action 'removeShift' shift}}>
+          {{fa-icon "times"}}
+        </div>
+        <div class="title col-xs-5">
+          <strong>{{shift.dateFormatted}}</strong><br>
+          <strong>{{shift.reference}}</strong>
+        </div>
+    
+        {{#if shift.day}}
+          <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#2196F3;">{{fa-icon 'sun-o'}}</span></span>
+        {{else}}
+          <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#1A237E;">{{fa-icon 'moon-o'}}</span></span>
+        {{/if}}
+    
+        <div class="date col-xs-3 text-right">
+           {{#if shift.isDone}}<small class="done">DONE</small>{{/if}}
+           <br>
+           <p>
+             Start {{shift.startTime}}
+             End {{shift.endTime}}
+           </p>
+        </div>
+      </div>
+    {{else}}
+      <h6 class="text-center">You had no shifts last week</h6>
     {{/each}}
   </div>
 </div>
