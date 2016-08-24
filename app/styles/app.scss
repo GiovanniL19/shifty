@@ -200,6 +200,33 @@ body{
 .add-shift{
   padding:1em;
   color: #6d6d6d;
+  .options{
+    margin-top:1em;
+  }
+  .btn-default{
+    background-color: white;
+    padding: 1em;
+    color: #006399;
+    padding: 1em 2em;
+    width: 45%;
+    margin-top:1em;
+    &:focus{
+      outline:0;
+    }
+  }
+  
+  .btn-primary{
+    background-color: $mainColour;
+    padding: 1em;
+    color: white;
+    padding: 1em 2em;
+    width: 45%;
+    margin-top:1em;
+    &:focus{
+      outline:0;
+    }
+  }
+  
   .datepicker table tr td.active:hover, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active:hover.disabled, .datepicker table tr td.active.disabled.disabled, .datepicker table tr td.active.disabled:hover.disabled, .datepicker table tr td.active[disabled], .datepicker table tr td.active:hover[disabled], .datepicker table tr td.active.disabled[disabled], .datepicker table tr td.active.disabled:hover[disabled] {
       background-color: #0044cc;
   }

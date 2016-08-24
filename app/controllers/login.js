@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   application: Ember.inject.controller(),
-  session: Ember.inject.service(),
+  session: Ember.inject.service('session'),
   identification: 'GiovanniLenguito',
   password: '123',
   loginAttempt: false,

@@ -13,13 +13,13 @@ export default Ember.Controller.extend({
   title: 'Overview',
   action: {
     add: true,
-    save: false,
+    nextAddShift: false,
   },
   
   clearAction: function(){
     this.set('action', {
       add: false,
-      save: false
+      nextAddShift: false
     });
   },
   

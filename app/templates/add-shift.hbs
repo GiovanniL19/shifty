@@ -1,7 +1,31 @@
 <div class="add-shift">
-  {{#if sectionOne}}
+  {{#liquid-if sectionOne class="nextPage"}}
     {{bootstrap-datepicker-inline multidate=true placeholder="Click to play" value=dates}}
   {{else}}
-    <button class="btn btn-default" {{action 'select' 'day'}}>Day</button> <button class="btn btn-default" {{action 'select' 'night'}}>Night</button>
-  {{/if}}
+    <div class="col-xs-12 text-center options">
+      <h4>Step 2.</h4>
+      <p>Great! We have the dates, now were they day or night shifts?</p>
+      
+      {{#if day}}
+        <button class="btn btn-primary" {{action 'select'}}>Day</button> 
+        <button class="btn btn-default" {{action 'select'}}>Night</button>
+      {{else}}
+        <button class="btn btn-default" {{action 'select'}}>Day</button> 
+        <button class="btn btn-primary" {{action 'select'}}>Night</button>
+      {{/if}}
+      
+      <br>
+      <hr>
+      <br>
+      <p>Add a reference?</p>
+      <br>
+      {{input type="text" class="form-control" placeholder="e.g NHS"}}
+      <br><br>
+      <p>What time do these shifts start?</p>
+      <br>
+      {{input type="time" class="form-control"}}
+      <br><br>
+      <button class="btn btn-default" {{action 'saveShifts'}}>Save</button> 
+    </div>
+  {{/liquid-if}}
 </div>
