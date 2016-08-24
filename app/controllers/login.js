@@ -25,6 +25,7 @@ export default Ember.Controller.extend({
         controller.set('application.message', '');
         controller.transitionToRoute('overview');
       }, (err) => {
+        console.log(err);
         controller.set('application.message', 'Incorrect Login Details');
       });
     }

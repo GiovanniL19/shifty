@@ -8,7 +8,6 @@ export default Ember.Route.extend({
       controller.set('application.showNav', true);
       
       controller.get('application').clearAction();
-      controller.set('application.action.nextAddShift', true);
       
       controller.set('application.showBack', true);
       

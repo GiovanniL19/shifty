@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
     add: true,
     nextAddShift: false,
   },
-  
+  loading: false,
   clearAction: function(){
     this.set('action', {
       add: false,
@@ -35,7 +35,9 @@ export default Ember.Controller.extend({
   getUser: function(){
     let controller = this;
     if(this.get('userID')){
+      this.set('loading', true);
       this.store.find('user', this.get('userID')).then(function(user){
+        controller.set('loading', false);
         controller.set('user', user);
       });
     }
@@ -47,7 +49,7 @@ export default Ember.Controller.extend({
       this.transitionToRoute('login');
     },
     saveShift: function(type){
-      if(type == 'next'){
+      if(type === 'next'){
         this.get('addShift').nextAddShift();
       }
     }

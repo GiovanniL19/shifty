@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  setupController: function(controller, model) {
+  setupController: function(controller) {
     
     if(controller.get('session.isAuthenticated')){
       controller.set('application.title', 'Overview');

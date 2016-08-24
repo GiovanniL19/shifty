@@ -1,64 +1,32 @@
 <div class="overview">
   <div class="history_cards">
+    {{#each application.user.shifts as |shift|}}
+      <div class="card">
+        <div class="remove col-xs-1" {{action 'removeShift' shift}}>
+          {{fa-icon "times"}}
+        </div>
+        <div class="title col-xs-5">
+          <strong>{{shift.dateFormatted}}</strong><br>
+          <strong>{{shift.reference}}</strong>
+        </div>
+      
+        {{#if shift.day}}
+          <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#2196F3;">{{fa-icon 'sun-o'}}</span></span>
+        {{else}}
+          <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#1A237E;">{{fa-icon 'moon-o'}}</span></span>
+        {{/if}}
+      
+        <div class="date col-xs-3 text-right">
+           {{#if shift.isDone}}<small class="done">DONE</small>{{/if}}
+           {{#if shift.upcoming}}<small class="upcoming">UPCOMING</small>{{/if}}
+
+           <br>Shift: {{shift.startTime}}
+        </div>
+      </div>
     
-    <div class="card">
-      <div class="title pull-left">
-        <strong>NHS</strong>
-        <br>
-        Ward 17
-      </div>
-      <div class="date pull-right">
-        15/08/2016 at 07:00am for 12 hours
-      </div>
-      <span class="colourCode pull-right"></span>
-    </div>
-    
-    <div class="card">
-      <div class="title pull-left">
-        <strong>NHS</strong>
-        <br>
-        Ward 17
-      </div>
-      <div class="date pull-right">
-        15/08/2016 at 07:00am for 12 hours
-      </div>
-      <span class="colourCode pull-right"></span>
-    </div>
-    
-    <div class="card">
-      <div class="title pull-left">
-        <strong>NHS</strong>
-        <br>
-        Ward 17
-      </div>
-      <div class="date pull-right">
-        15/08/2016 at 07:00am for 12 hours
-      </div>
-      <span class="colourCode pull-right"></span>
-    </div>
-    
-    <div class="card">
-      <div class="title pull-left">
-        <strong>NHS</strong>
-        <br>
-        Ward 17
-      </div>
-      <div class="date pull-right">
-        15/08/2016 at 07:00am for 12 hours
-      </div>
-      <span class="colourCode pull-right"></span>
-    </div>
-    
-    <div class="card">
-      <div class="title pull-left">
-        <strong>NHS</strong>
-        <br>
-        Ward 17
-      </div>
-      <div class="date pull-right">
-        15/08/2016 at 07:00am for 12 hours
-      </div>
-      <span class="colourCode pull-right"></span>
-    </div>
+    {{else}}
+      <h2 class="text-center welcome">{{fa-icon "bolt"}}</h2>
+      <h4 class="text-center toDo">Lets get started, tap the plus button in the top right to add shifts!</h4>
+    {{/each}}
   </div>
 </div>

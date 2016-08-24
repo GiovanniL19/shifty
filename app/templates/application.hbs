@@ -7,3 +7,9 @@
 
 {{partial "navigation"}}
 {{outlet}}
+
+{{#if loading}}
+  <div class="loading">
+    <span class="spinner">{{fa-icon 'circle-o-notch' spin=true}}</span>
+  </div>
+{{/if}}

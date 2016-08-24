@@ -17,13 +17,13 @@
       <br>
       <hr>
       <br>
-      <p>Add a reference?</p>
+      <p>Add a reference</p>
       <br>
-      {{input type="text" class="form-control" placeholder="e.g NHS"}}
+      {{input type="text" class="form-control" placeholder="e.g NHS" value=reference}}
       <br><br>
       <p>What time do these shifts start?</p>
       <br>
-      {{input type="time" class="form-control"}}
+      {{input type="time" class="form-control" value=time}}
       <br><br>
       <button class="btn btn-default" {{action 'saveShifts'}}>Save</button> 
     </div>
