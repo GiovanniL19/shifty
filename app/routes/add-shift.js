@@ -10,10 +10,7 @@ export default Ember.Route.extend({
       controller.get('application').clearAction();
       controller.set('application.action.save', true);
       
-      var shift = controller.store.createRecord('shift');
-      shift.set('dateTime', new Date());
-      controller.set('model', shift);
-      
+      controller.set('application.showBack', true);
       
     }else{
       controller.transitionToRoute('login');

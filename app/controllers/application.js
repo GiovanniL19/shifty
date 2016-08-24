@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
   userID: '',
   showNav: false,
   message: '',
+  showBack: false,
   title: 'Overview',
   action: {
     add: true,
@@ -46,8 +47,8 @@ export default Ember.Controller.extend({
       this.transitionToRoute('login');
     },
     saveShift: function(type){
-      if(type == 'new'){
-        this.get('addShift').saveShift();
+      if(type == 'next'){
+        this.get('addShift').nextAddShift();
       }
     }
   }

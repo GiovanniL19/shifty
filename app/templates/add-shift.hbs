@@ -1,23 +1,7 @@
-<div class="top-header">
-  
-</div>
 <div class="add-shift">
-  <div class="input-group">
-    <div class="input-group-addon">{{fa-icon "hashtag"}}</div>
-    {{input type="text" class="form-control" placeholder="Reference" value=model.reference}}
-  </div>
-  
-  <div class="input-group">
-    <div class="input-group-addon">{{fa-icon "location-arrow"}}</div>
-    {{input type="text" class="form-control" placeholder="Location" value=model.location}}
-  </div>
-  
-  <div class="input-group">
-    <div class="input-group-addon">{{fa-icon "circle-thin"}}</div>
-    {{input type="text" class="form-control" placeholder="Colour" value=model.colour}}
-  </div>
-  
-  <div class="input-group">
-     {{bs-datetimepicker class="dateTime" date=model.dateTime openOnFocus=true}}
-  </div>
+  {{#if sectionOne}}
+    {{bootstrap-datepicker-inline multidate=true placeholder="Click to play" value=dates}}
+  {{else}}
+    <button class="btn btn-default" {{action 'select' 'day'}}>Day</button> <button class="btn btn-default" {{action 'select' 'night'}}>Night</button>
+  {{/if}}
 </div>
