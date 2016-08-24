@@ -5,6 +5,8 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
   });
+  
+  app.import('bower_components/async/dist/async.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

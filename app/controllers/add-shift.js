@@ -19,7 +19,14 @@ export default Ember.Controller.extend({
     },
     saveShifts: function(){
       var dates = this.get('dates');
-      debugger;
+      
+      //date format: Thu Aug 04 2016 00:00:00 GMT+0100 (BST)
+      
+      async.eachSeries(dates, function iterator(date, callback) {
+        callback();
+      }, function done() {
+        alert('done');
+      });
     }
   }
 });
