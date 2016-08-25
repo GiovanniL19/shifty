@@ -52,26 +52,26 @@
       {{/side-menu-link-to}}
     </li>
     
-    <li {{action "menuUpdate"}} style="{{if isHistory 'background: #eee;'}}">
+    <li style="{{if isHistory 'background: #eee;'}}">
       {{#side-menu-link-to "history"}}
         <span class="icon">{{fa-icon "history"}}</span> History
       {{/side-menu-link-to}}
     </li>
     
-    <li {{action "menuUpdate"}} style="{{if isUpcoming 'background: #eee;'}}">
-      {{#side-menu-link-to "overview"}}
+    <li style="{{if isUpcoming 'background: #eee;'}}">
+      {{#side-menu-link-to "upcoming"}}
         <span class="icon">{{fa-icon "list"}}</span> Upcoming
       {{/side-menu-link-to}}
     </li>
     
-    <li {{action "menuUpdate"}} style="{{if isSettings 'background: #eee;'}}">
+    <li style="{{if isSettings 'background: #eee;'}}">
       {{#side-menu-link-to "overview"}}
         <span class="icon">{{fa-icon "cog"}}</span> Settings
       {{/side-menu-link-to}}
     </li>
     
     <li class="divider"></li>
-    <li {{action "menuUpdate"}} style="{{if isAddShift 'background: #eee;'}}">
+    <li style="{{if isAddShift 'background: #eee;'}}">
       {{#side-menu-link-to "add-shift"}}
         <span class="icon">{{fa-icon "plus"}}</span> Add Shifts
       {{/side-menu-link-to}}

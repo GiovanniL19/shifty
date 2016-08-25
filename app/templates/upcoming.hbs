@@ -1,0 +1,35 @@
+<div class="history">
+  {{#if model}}
+    <p class="text-center"><h5>Shifts coming up...</h5></p>
+  {{/if}}
+  <div class="cards">
+    {{#each model as |shift|}}
+      <div class="card">
+        <div class="remove col-xs-1" {{action 'removeShift' shift}}>
+          {{fa-icon "times"}}
+        </div>
+        <div class="title col-xs-5">
+          <strong>{{shift.dateFormatted}}</strong><br>
+          <strong>{{shift.reference}}</strong>
+        </div>
+  
+        {{#if shift.day}}
+          <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#2196F3;">{{fa-icon 'sun-o'}}</span></span>
+        {{else}}
+          <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:#1A237E;">{{fa-icon 'moon-o'}}</span></span>
+        {{/if}}
+  
+        <div class="date col-xs-3 text-right">
+           {{#if shift.upcoming}}<small class="upcoming">COMING UP</small>{{/if}}
+           <br>
+           <p>
+             Start {{shift.startTime}}
+             End {{shift.endTime}}
+           </p>
+        </div>
+      </div>
+    {{else}}
+      <h6 class="text-center">You have has no future shifts</h6>
+    {{/each}}
+  </div>
+</div>
