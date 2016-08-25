@@ -183,6 +183,10 @@ body{
   left:0;
   z-index:99999998;
   width:100%;
+  .container-fluid{
+    margin: 0;
+    padding: 0 0.8em;
+  }
   .menu{
     i{
       margin-left:-0.5em;
@@ -196,6 +200,8 @@ body{
   .action{
     padding: 0.5em 0;
     font-size: 1.5em;
+    position: fixed;
+    right: 0.7em;
   }
   .title{
     padding: 0.5em 0;
