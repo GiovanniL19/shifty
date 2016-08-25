@@ -16,9 +16,19 @@
 
 $mainColour: #006399;
 
+*:not(input):not(textarea) {
+  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+}   
 *{
   padding:0;
   margin:0;
+  a{
+  }
+  &:focus{
+    outline:0;
+  }
+  
 }
 body{
   font-family: 'Ubuntu', sans-serif;

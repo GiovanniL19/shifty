@@ -15,6 +15,14 @@
 
     {{content-for "head-footer"}}
   </head>
+  
+  <script>
+    window.oncontextmenu = function(event) {
+         event.preventDefault();
+         event.stopPropagation();
+         return false;
+    };
+  </script>
   <body>
     {{content-for "body"}}
 
