@@ -16,6 +16,51 @@ export default Ember.Controller.extend({
     nextAddShift: false,
   },
   loading: false,
+  
+  isOverview: function(){
+    let path = this.get('currentPath');
+    if(path === 'overview'){
+      return true;
+    }else{
+      return false;
+    }
+  }.property('currentPath'),
+  
+  isHistory: function(){
+    let path = this.get('currentPath');
+    if(path === 'history'){
+      return true;
+    }else{
+      return false;
+    }
+  }.property('currentPath'),
+  
+  isUpcoming: function(){
+    let path = this.get('currentPath');
+    if(path === 'upcoming'){
+      return true;
+    }else{
+      return false;
+    }
+  }.property('currentPath'),
+  
+  isSettings: function(){
+    let path = this.get('currentPath');
+    if(path === 'settings'){
+      return true;
+    }else{
+      return false;
+    }
+  }.property('currentPath'),
+  
+  isAddShift: function(){
+    let path = this.get('currentPath');
+    if(path === 'add-shift'){
+      return true;
+    }else{
+      return false;
+    }
+  }.property('currentPath'),
   clearAction: function(){
     this.set('action', {
       add: false,
@@ -33,6 +78,7 @@ export default Ember.Controller.extend({
   }.observes('message'),
   
   getUser: function(){
+    this.set('userID', this.get('session.session.authenticated.userId'));
     let controller = this;
     if(this.get('userID')){
       this.set('loading', true);
@@ -41,7 +87,7 @@ export default Ember.Controller.extend({
         controller.set('user', user);
       });
     }
-  }.observes('userID'),
+  },
   actions: {
     invalidateSession: function(){
       this.get('session').invalidate();

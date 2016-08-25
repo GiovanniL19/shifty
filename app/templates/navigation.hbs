@@ -46,32 +46,32 @@
         <small>{{user.secure.username}}</small>
       </div>
     </div>
-    <li>
+    <li style="{{if isOverview 'background: #eee;'}}">
       {{#side-menu-link-to "overview"}}
         <span class="icon">{{fa-icon "home"}}</span> Overview
       {{/side-menu-link-to}}
     </li>
     
-    <li>
+    <li {{action "menuUpdate"}} style="{{if isHistory 'background: #eee;'}}">
       {{#side-menu-link-to "history"}}
         <span class="icon">{{fa-icon "history"}}</span> History
       {{/side-menu-link-to}}
     </li>
     
-    <li>
+    <li {{action "menuUpdate"}} style="{{if isUpcoming 'background: #eee;'}}">
       {{#side-menu-link-to "overview"}}
         <span class="icon">{{fa-icon "list"}}</span> Upcoming
       {{/side-menu-link-to}}
     </li>
     
-    <li>
+    <li {{action "menuUpdate"}} style="{{if isSettings 'background: #eee;'}}">
       {{#side-menu-link-to "overview"}}
         <span class="icon">{{fa-icon "cog"}}</span> Settings
       {{/side-menu-link-to}}
     </li>
     
     <li class="divider"></li>
-    <li>
+    <li {{action "menuUpdate"}} style="{{if isAddShift 'background: #eee;'}}">
       {{#side-menu-link-to "add-shift"}}
         <span class="icon">{{fa-icon "plus"}}</span> Add Shifts
       {{/side-menu-link-to}}

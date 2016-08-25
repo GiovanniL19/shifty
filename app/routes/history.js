@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   activate: function(){
     let controller = this.controllerFor('history');
     this.store.query('shift', {showHistory: 'true', user: controller.get('application.user.id')}).then(function(shifts){
-      controller.set('model', shifts);
+      controller.set('model', shifts.sortBy('dateTimeStamp').reverse());
     });
   },
   setupController: function(controller) {

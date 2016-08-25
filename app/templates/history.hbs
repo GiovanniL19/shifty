@@ -1,5 +1,7 @@
 <div class="history">
-  <p class="text-center"><h5>You've been busy!</h5></p>
+  {{#if model}}
+    <p class="text-center"><h5>You've been busy!</h5></p>
+  {{/if}}
   <div class="cards">
     {{#each model as |shift|}}
       <div class="card">
