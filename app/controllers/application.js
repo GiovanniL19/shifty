@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   sideMenu: Ember.inject.service(),
   addShift: Ember.inject.controller(),
+  settings: Ember.inject.controller(),
   
   user: null,
   userID: '',
@@ -13,6 +14,7 @@ export default Ember.Controller.extend({
   action: {
     add: true,
     nextAddShift: false,
+    saveSettings: false,
   },
   loading: false,
   
@@ -71,7 +73,8 @@ export default Ember.Controller.extend({
   clearAction: function(){
     this.set('action', {
       add: false,
-      nextAddShift: false
+      nextAddShift: false,
+      saveSettings: false
     });
   },
   
@@ -105,6 +108,9 @@ export default Ember.Controller.extend({
       if(type === 'next'){
         this.get('addShift').nextAddShift();
       }
+    },
+    saveSettings: function(){
+      this.get('settings').save();
     }
   }
 });

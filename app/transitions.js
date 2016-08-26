@@ -47,4 +47,28 @@ export default function(){
     this.use('fade'),
     this.reverse('fade')
   );
+  this.transition(
+    this.fromRoute('overview'),
+    this.toRoute('settings'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
+  this.transition(
+    this.fromRoute('history'),
+    this.toRoute('settings'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
+  this.transition(
+    this.fromRoute('upcoming'),
+    this.toRoute('settings'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
+  this.transition(
+    this.fromRoute('addShift'),
+    this.toRoute('settings'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
 };

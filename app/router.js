@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('add-shift');
   this.route('history');
   this.route('upcoming');
+  this.route('settings');
 });
 
 export default Router;

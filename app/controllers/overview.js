@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
       headers: { "Authorization": "563492ad6f91700001000001ec52f31e44ae4cc85bcff65039983df1" },
 			accepts: 'application/json',
 			success: function(data) {
-        let number = Math.floor(Math.random() * 20) + 1;
+        let number = Math.floor(Math.random() * 18) + 1;
         controller.set('backTop', data.photos[number].src.medium);
 			},
 			error: function(err) {
@@ -51,6 +51,9 @@ export default Ember.Controller.extend({
   }.observes('application.user.id'),
   
   actions:{
+    refresh: function(){
+      location.reload();
+    },
     removeShift: function(shift){
       let controller = this;
       if(confirm('Are you sure you want to remove this shift?')){

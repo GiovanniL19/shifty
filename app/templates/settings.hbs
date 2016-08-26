@@ -1,0 +1,23 @@
+<div class="settings">
+  <div class="text-center center">
+    <div class="profilePicture" style="background:url('{{application.user.identity.image}}'); background-size:cover;"></div>
+    <br>
+    <small>Profile Picture</small>
+    {{upload-file type="file" class="form-control" accept="image/*" file=profilePicture fileSize=imageSize fileType=imageType}}
+    <br><br>
+    <small>First Name</small>
+    {{input type="text" class="form-control" placeholder="First Name" value=application.user.identity.firstName}}
+    <br><br>
+    <small>Last Name</small>
+    {{input type="text" class="form-control" placeholder="Last Name" value=application.user.identity.lastName}}
+    <br><br>
+    <small>Email</small>
+    {{input type="text" class="form-control" readonly=true placeholder="Email" value=application.user.identity.email}}
+    <br><br>
+    <small>User Name</small>
+    {{input type="text" class="form-control" placeholder="Username" readonly=true value=application.user.secure.username}}
+    <br><br>
+    <small>Password</small>
+    {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
+  </div>
+</div>

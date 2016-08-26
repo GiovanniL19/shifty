@@ -31,6 +31,12 @@
           {{fa-icon "chevron-right"}}
         </a>
       {{/if}}
+      
+      {{#if action.saveSettings}}
+        <a {{action "saveSettings"}}>
+          {{fa-icon "floppy-o"}}
+        </a>
+      {{/if}}
     </div>
   </div>
 </nav>
@@ -72,7 +78,7 @@
   
   <li class="divider"></li>
   <li style="{{if isSettings 'background: #eee;'}}">
-    {{#side-menu-link-to "overview"}}
+    {{#side-menu-link-to "settings"}}
       <span class="icon">{{fa-icon "cog"}}</span> Settings
     {{/side-menu-link-to}}
   </li>
