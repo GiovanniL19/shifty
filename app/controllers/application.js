@@ -7,7 +7,6 @@ export default Ember.Controller.extend({
   
   user: null,
   userID: '',
-  showNav: false,
   message: '',
   showBack: false,
   title: 'Overview',
@@ -17,6 +16,14 @@ export default Ember.Controller.extend({
   },
   loading: false,
   
+  isLoginPage: function(){
+    let path = this.get('currentPath');
+    if(path === 'login'){
+      return true;
+    }else{
+      return false;
+    }
+  }.property('currentPath'),
   isOverview: function(){
     let path = this.get('currentPath');
     if(path === 'overview'){

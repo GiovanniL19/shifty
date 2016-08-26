@@ -1,18 +1,20 @@
 <div class="overview">
   <div class="cards">
-    <div class="lg-card">
-      {{#if nextWeekShifts}}
-        <h2 class="text-center welcome animated pulse" style="background:#ff9a07">{{fa-icon "exclamation"}}</h2>
-        <h4 class="text-center toDo">You Have Shifts Next Week</h4>
-      {{else}}
-          <h2 class="text-center welcome animated pulse" style="background:#4CAF50">{{fa-icon "thumbs-up"}}</h2>
-          <h4 class="text-center toDo">No Shifts coming up!</h4>
-      {{/if}}
+    <div class="back-top" style="background:url('{{backTop}}') fixed no-repeat; backgrouns-size:cover;">
+      <span class="lg-card">
+        {{#if nextWeekShifts}}
+          <h2 class="text-center welcome animated pulse" style="background:#ff9a07">{{fa-icon "exclamation"}}</h2>
+          <h4 class="text-center toDo">You Have Shifts Next Week</h4>
+        {{else}}
+            <h2 class="text-center welcome animated pulse" style="background:#4CAF50">{{fa-icon "thumbs-up"}}</h2>
+            <h4 class="text-center toDo">No Shifts coming up!</h4>
+        {{/if}}
+      </span>
     </div>
     <hr>
     <h5>Coming Up</h5>
     {{#each nextWeekShifts as |shift|}}
-      <div class="card">
+      <div class="card animated fadeIn" id="{{shift.id}}">
         <div class="remove col-xs-1" {{action 'removeShift' shift}}>
           {{fa-icon "times"}}
         </div>
@@ -43,7 +45,7 @@
     <hr>
     <h5>Past Week</h5>
     {{#each lastWeekShifts as |shift|}}
-      <div class="card lastWeek">
+      <div class="card lastweek animated fadeIn" id="{{shift.id}}">
         <div class="remove col-xs-1" {{action 'removeShift' shift}}>
           {{fa-icon "times"}}
         </div>

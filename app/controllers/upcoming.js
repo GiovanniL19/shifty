@@ -8,12 +8,20 @@ export default Ember.Controller.extend({
     removeShift: function(shift){
       let controller = this;
       if(confirm('Are you sure you want to remove this shift?')){
-        this.get('application.user.shifts').removeObject(shift);
-        this.get('application.user').save().then(function(){
-          shift.destroyRecord().then(function(){
-            controller.set('application.message', 'Shift Removed');
+          
+        
+        var card = document.getElementById(shift.get('id'));
+        card.className += " fadeOutRight";
+          
+        setTimeout(function(){
+          controller.get('application.user.shifts').removeObject(shift);
+          controller.get('application.user').save().then(function(){
+            $('#'+shift.get('id')+'').remove();
+            shift.destroyRecord().then(function(){
+              controller.set('application.message', 'Shift Removed');
+            });
           });
-        });
+        },1000);
       }
     }
   }

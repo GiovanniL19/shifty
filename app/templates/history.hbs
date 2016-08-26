@@ -4,7 +4,7 @@
   {{/if}}
   <div class="cards">
     {{#each model as |shift|}}
-      <div class="card">
+      <div class="card animated fadeIn" id="{{shift.id}}">
         <div class="remove col-xs-1" {{action 'removeShift' shift}}>
           {{fa-icon "times"}}
         </div>

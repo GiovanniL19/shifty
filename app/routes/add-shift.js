@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     if(controller.get('session.isAuthenticated')){
       controller.set('application.title', 'Add Shifts');
       
-      controller.set('application.showNav', true);
+      
       
       controller.get('application').clearAction();
       

@@ -5,8 +5,12 @@
 {{/if}}
 
 
-{{partial "navigation"}}
-{{outlet}}
+{{#if isLoginPage}}
+  {{outlet}}
+{{else}}
+  {{partial "navigation"}}
+  {{liquid-outlet class="liquid-container"}}
+{{/if}}
 
 {{#if loading}}
   <div class="loading">

@@ -1,88 +1,87 @@
-{{#if showNav}}
-  <nav class="navbar navbar-default">
-    <div class="container-fluid col-xs-12">
-      <div class="col-xs-2 menu">
-        {{#side-menu-toggle}}
-          {{fa-icon "bars"}}
-        {{/side-menu-toggle}}
-      </div>
-      
-      <div class="col-xs-1 back">
-        {{#if showBack}}
-          <a href="##" onClick="history.go(-1); return false;">
-            {{fa-icon 'chevron-left'}}
-          </a>
-        {{/if}}
-      </div>
-      
-      <div class="col-xs-6 text-center title">
-        {{title}}
-      </div>
-      
-      <div class="col-xs-2 text-right action">
-        {{#if action.add}}
-          {{#link-to 'add-shift'}}
-            {{fa-icon "plus"}}
-          {{/link-to}}
-        {{/if}}
-        
-        {{#if action.nextAddShift}}
-          <a {{action "saveShift" 'next'}}>
-            {{fa-icon "chevron-right"}}
-          </a>
-        {{/if}}
-      </div>
-    </div>
-  </nav>
 
-  {{#side-menu}}
-  <ul class="nav">
-    <div class="account">
-      <div class="profilePicture pull-left" style="background:url('{{user.identity.image}}'); background-size:cover;">
-      </div>
-      <div class="name pull-left">
-        {{user.identity.fullName}}
-        <br>
-        <small>{{user.secure.username}}</small>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid col-xs-12">
+    <div class="col-xs-2 menu">
+      {{#side-menu-toggle}}
+        {{fa-icon "bars"}}
+      {{/side-menu-toggle}}
     </div>
-    <li style="{{if isOverview 'background: #eee;'}}">
-      {{#side-menu-link-to "overview"}}
-        <span class="icon">{{fa-icon "home"}}</span> Overview
-      {{/side-menu-link-to}}
-    </li>
     
-    <li style="{{if isHistory 'background: #eee;'}}">
-      {{#side-menu-link-to "history"}}
-        <span class="icon">{{fa-icon "history"}}</span> History
-      {{/side-menu-link-to}}
-    </li>
+    <div class="col-xs-1 back">
+      {{#if showBack}}
+        <a href="##" onClick="history.go(-1); return false;">
+          {{fa-icon 'chevron-left'}}
+        </a>
+      {{/if}}
+    </div>
     
-    <li style="{{if isUpcoming 'background: #eee;'}}">
-      {{#side-menu-link-to "upcoming"}}
-        <span class="icon">{{fa-icon "list"}}</span> Upcoming
-      {{/side-menu-link-to}}
-    </li>
+    <div class="col-xs-6 text-center title">
+      {{title}}
+    </div>
     
-    <li style="{{if isSettings 'background: #eee;'}}">
-      {{#side-menu-link-to "overview"}}
-        <span class="icon">{{fa-icon "cog"}}</span> Settings
-      {{/side-menu-link-to}}
-    </li>
-    
-    <li class="divider"></li>
-    <li style="{{if isAddShift 'background: #eee;'}}">
-      {{#side-menu-link-to "add-shift"}}
-        <span class="icon">{{fa-icon "plus"}}</span> Add Shifts
-      {{/side-menu-link-to}}
-    </li>
-    <li>
-      <a {{action "invalidateSession"}}>
-        <span class="icon">{{fa-icon "user"}}</span> Logout
-      </a>
-    </li>
-  </ul>
-  {{/side-menu}}
-  {{content-backdrop}}
+    <div class="col-xs-2 text-right action">
+      {{#if action.add}}
+        {{#link-to 'add-shift'}}
+          {{fa-icon "plus"}}
+        {{/link-to}}
+      {{/if}}
+      
+      {{#if action.nextAddShift}}
+        <a {{action "saveShift" 'next'}}>
+          {{fa-icon "chevron-right"}}
+        </a>
+      {{/if}}
+    </div>
+  </div>
+</nav>
+
+{{#side-menu}}
+<ul class="nav">
+  <div class="account">
+    <div class="profilePicture pull-left" style="background:url('{{user.identity.image}}'); background-size:cover;">
+    </div>
+    <div class="name pull-left">
+      {{user.identity.fullName}}
+      <br>
+      <small>{{user.secure.username}}</small>
+    </div>
+  </div>
+  <li style="{{if isOverview 'background: #eee;'}}">
+    {{#side-menu-link-to "overview"}}
+      <span class="icon">{{fa-icon "home"}}</span> Overview
+    {{/side-menu-link-to}}
+  </li>
   
-{{/if}}
+  <li style="{{if isHistory 'background: #eee;'}}">
+    {{#side-menu-link-to "history"}}
+      <span class="icon">{{fa-icon "history"}}</span> History
+    {{/side-menu-link-to}}
+  </li>
+  
+  <li style="{{if isUpcoming 'background: #eee;'}}">
+    {{#side-menu-link-to "upcoming"}}
+      <span class="icon">{{fa-icon "list"}}</span> Upcoming
+    {{/side-menu-link-to}}
+  </li>
+  
+  <li style="{{if isDaysOff 'background: #eee;'}}">
+    {{#side-menu-link-to "overview"}}
+      <span class="icon">{{fa-icon "calendar-o"}}</span> Days Off
+    {{/side-menu-link-to}}
+  </li>
+  
+  <li class="divider"></li>
+  <li style="{{if isSettings 'background: #eee;'}}">
+    {{#side-menu-link-to "overview"}}
+      <span class="icon">{{fa-icon "cog"}}</span> Settings
+    {{/side-menu-link-to}}
+  </li>
+  
+  <li>
+    <a {{action "invalidateSession"}}>
+      <span class="icon">{{fa-icon "user"}}</span> Logout
+    </a>
+  </li>
+</ul>
+{{/side-menu}}
+{{content-backdrop}}

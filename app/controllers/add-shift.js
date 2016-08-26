@@ -10,6 +10,9 @@ export default Ember.Controller.extend({
   startTime: 0,
   endTime: 0 ,
   
+  //set all dates in system in dates valu
+  //on save ignore dates that already exist in database
+  
   nextAddShift: function(){
     this.set('sectionOne', false);
     this.set('application.action.nextAddShift', false);
