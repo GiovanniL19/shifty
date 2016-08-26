@@ -17,6 +17,7 @@
 @import 'https://fonts.googleapis.com/css?family=Ubuntu';
 
 $mainColour: #006399;
+$red: #ff5151;
 //$mainColour: #43A047;
 
 *:not(input):not(textarea) {
@@ -31,8 +32,17 @@ $mainColour: #006399;
     &:focus{
       outline:0;
     }
-  }
-  
+  }  
+}
+.alert-danger{
+  border-radius:0;
+  color:white;
+  border:none;
+  background:$red;
+}
+.btn-primary {
+  background-color: $mainColour;
+  color:white;
 }
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
   opacity:0.5;
@@ -69,7 +79,7 @@ body{
 //1.0
 //Login
 .message_alert {
-  background: #ff5151;
+  background: $red;
   position: fixed;
   width: 100%;
   left: 0;
@@ -86,23 +96,47 @@ body{
   //background:url('https://static.pexels.com/photos/136739/pexels-photo-136739.jpeg') fixed center center;
   background:url('https://static.pexels.com/photos/110143/pexels-photo-110143-large.jpeg') fixed center center;
   background-size:cover;
-  height:100%;
+  height:101%;
   position: fixed;
   width: 100%;
   overflow: scroll;
+  a{
+    color:white;
+  }
   .login_form{
     position:absolute;
     top:0;
+    width:100%;
+    height:100%;
+    color:white;
     .btn-primary {
+      background-color: $mainColour;
+      padding: 1em;
+      color: white;
+      padding: 1em 2em;
+      width: 100%;
+      border: none;
+      &:hover, &:focus{
+        outline:0;
+      }
+    }
+    .btn-default {
       background-color: white;
       padding: 1em;
       color: $mainColour;
       padding: 1em 2em;
       width: 100%;
-      box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.19);
+      margin-bottom:1em;
+      margin-top:1em;
+      border: none;
       &:hover, &:focus{
         outline:0;
       }
+    }
+    .round{
+      height: 10em;
+      width: 10em;
+      border-radius: 100%;
     }
     .logo{
       font-family: 'Pacifico', cursive;
@@ -529,6 +563,22 @@ body{
   color: #6d6d6d;
   background: white;
   padding: 1em;
+  .imageUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+  }
+  .imageUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
   .profilePicture{
     background: white;
     background-size: cover;

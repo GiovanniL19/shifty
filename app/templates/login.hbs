@@ -5,16 +5,44 @@
           Shifty<br>
           <small>The smart shift rota</small>
       </div>
-  
-      <div class="input-group">
-        {{input type="text" class="form-control" placeholder="Username" value=identification}}
-        {{input type="password" class="form-control" placeholder="Password" value=password insert-newline='authenticate'}}
-        <button class="btn btn-primary" {{action 'authenticate'}}>Login</button>
-      </div>
+
+      
+      {{#liquid-if choose class="slide"}}
+        <button class="btn btn-default round" {{action 'goTo' 'login'}}>Login</button><br>
+        <button class="btn btn-default round" {{action 'goTo' 'register'}}>Register</button>
+      {{else}}
+        <a {{action 'goTo' 'back'}}>Back</a>
+        <br>
+        {{#liquid-if isLogin class="slide"}}
+          {{#liquid-unless resetPassword class="slide"}}
+            <div class="input-group">
+              {{input type="text" class="form-control" placeholder="Username" value=identification}}
+              {{input type="password" class="form-control" placeholder="Password" value=password insert-newline='authenticate'}}
+              <a {{action 'forgotPassword'}}>Forgot Password?</a>
+              <button class="btn btn-default" {{action 'authenticate'}}>Login</button>
+            </div>
+          {{else}}
+            {{input type="text" class="form-control" placeholder="Email" value=resetEmail}}
+            <button class="btn btn-default" {{action 'sendPassword'}}>Send Password</button>
+          {{/liquid-unless}}
+        {{else}}
+          <div class="input-group">
+            {{input type="text" class="form-control" placeholder="Username*" value=newUser.secure.username}}
+            {{input type="email" class="form-control" placeholder="Email*" value=newUser.identity.email}}
+            {{input type="password" class="form-control" placeholder="Password*" value=newPassword}}
+            {{input type="password" class="form-control" placeholder="Confirm Password*" value=cNewPassword}}
+            
+            <button class="btn btn-default" {{action 'register'}}>Register</button>
+          </div>
+        
+        {{/liquid-if}}
+      {{/liquid-if}}
     <br>
-    <span class="developer_logo">
-      {{fa-icon "code" rotate=315}}
-    </span>
+    {{#unless choose}}
+      <span class="developer_logo">
+        {{fa-icon "code" rotate=315}}
+      </span>
+    {{/unless}}
     </div>
   </div>
 </div>

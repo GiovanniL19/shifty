@@ -1,9 +1,17 @@
 <div class="settings">
   <div class="text-center center">
+    {{#if tempPassSet}}
+      <div class="alert alert-danger">Please set your password</div>
+      <small>Password</small>
+      {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
+      <br><br>
+    {{/if}}
     <div class="profilePicture" style="background:url('{{application.user.identity.image}}'); background-size:cover;"></div>
     <br>
-    <small>Profile Picture</small>
-    {{upload-file type="file" class="form-control" accept="image/*" file=profilePicture fileSize=imageSize fileType=imageType}}
+    <div class="imageUpload btn btn-default">
+        <span>Upload Picture</span>
+        {{upload-file type="file" class="upload" accept="image/*" file=profilePicture fileSize=imageSize fileType=imageType accept="image/*;capture=camera"}}
+    </div>    
     <br><br>
     <small>First Name</small>
     {{input type="text" class="form-control" placeholder="First Name" value=application.user.identity.firstName}}
@@ -17,7 +25,9 @@
     <small>User Name</small>
     {{input type="text" class="form-control" placeholder="Username" readonly=true value=application.user.secure.username}}
     <br><br>
-    <small>Password</small>
-    {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
+    {{#unless tempPassSet}}
+      <small>Password</small>
+      {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
+    {{/unless}}
   </div>
 </div>

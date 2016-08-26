@@ -5,6 +5,13 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   newPassword: '',
   profilePicture: null,
+  tempPassSet: function(){
+    if(this.get('application.user.secure.tempPass')){
+      return true;
+    }else{
+      return false;
+    }
+  },
   save: function(){
     var user = this.get('application.user');
     
@@ -14,6 +21,7 @@ export default Ember.Controller.extend({
     if(this.get('newPassword')){
       var md5Password = md5('j*(XY@^T%&!F%I)' + this.get('newPassword') + 'juxhUGBG@^&DF(A)');
       user.set('secure.salt', md5Password);
+      user.set('secure.tempPass', '');
       logout = true;
     }
     

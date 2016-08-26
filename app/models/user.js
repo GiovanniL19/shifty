@@ -7,5 +7,6 @@ export default DS.Model.extend({
   dateModified: DS.attr('string'),
   identity: MF.fragment('user-identity'),
   secure: MF.fragment('user-secure'),
-  shifts: DS.hasMany('shift', {async: true, defaultValue: []})
+  shifts: DS.hasMany('shift', {async: true, defaultValue: []}),
+  resetPasswordPin: DS.attr('number')
 });
