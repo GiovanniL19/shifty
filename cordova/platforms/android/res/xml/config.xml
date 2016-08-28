@@ -4,12 +4,16 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
     <name>Shifty</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Shifty is a easy to use shift rota with a great design
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="giovanni16.gl@gmail.com" href="http://giovannilenguito.co.uk">
+      Giovanni Lenguito
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -22,4 +26,6 @@
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#006399" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
 </widget>
