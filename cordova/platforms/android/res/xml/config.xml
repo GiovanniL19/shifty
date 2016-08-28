@@ -26,6 +26,6 @@
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="StatusBarBackgroundColor" value="#006399" />
+    <preference name="StatusBarBackgroundColor" value="#015989" />
     <preference name="StatusBarOverlaysWebView" value="true" />
 </widget>
