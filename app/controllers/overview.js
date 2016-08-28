@@ -34,7 +34,6 @@ export default Ember.Controller.extend({
 				console.log(err);
 			}
 		});
-  
   }.observes('nextWeekShifts.length'),
 
   getWeekData: function(){

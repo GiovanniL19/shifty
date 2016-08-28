@@ -1,3 +1,9 @@
+{{#if isOffline}}
+  <div class="message_alert">
+    You are offline, some features may not work
+  </div>
+{{/if}}
+
 {{#if message}}
   <div class="message_alert">
     {{message}}
@@ -17,3 +23,4 @@
     <span class="spinner">{{fa-icon 'circle-o-notch' spin=true}}</span>
   </div>
 {{/if}}
+  

@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   addShift: Ember.inject.controller(),
   settings: Ember.inject.controller(),
   
+  isOffline: false,
   user: null,
   userID: '',
   message: '',
