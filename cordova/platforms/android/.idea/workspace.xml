@@ -40,8 +40,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/xml/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72911966">
-              <caret line="28" column="62" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.7968397">
+              <caret line="43" column="14" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -1427,7 +1427,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5888692666000" />
+        <entry key="$PROJECT_DIR$" value="5888695398000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2326,8 +2326,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/xml/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72911966">
-          <caret line="28" column="62" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.7968397">
+          <caret line="43" column="14" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="66" />
           <folding />
         </state>
       </provider>
