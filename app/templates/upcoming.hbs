@@ -1,3 +1,5 @@
+{{partial 'search'}}
+
 <div class="upComing">
   {{#if model}}
     <p class="text-center"><h5>Shifts coming up...</h5></p>
@@ -29,7 +31,10 @@
         </div>
       </div>
     {{else}}
-      <h6 class="text-center">You have has no future shifts</h6>
+      <div class="text-center nothing">
+        <h1>{{fa-icon "calendar-times-o"}}</h1>
+        <h6>You have no future shifts</h6>
+      </div>
     {{/each}}
   </div>
 </div>

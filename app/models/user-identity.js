@@ -8,6 +8,10 @@ export default MF.Fragment.extend({
   image: DS.attr('string'),
   
   fullName: function(){
-    return this.get('firstName') + " " + this.get('lastName');
+    if(this.get('firstName') && this.get('lastName')){
+      return this.get('firstName') + " " + this.get('lastName');
+    }else{
+      return 'Hello User';
+    }
   }.property('firstName','lastName')
 });

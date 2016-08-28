@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.shifty;
+package com.giovannilenguito.shifty;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('history');
   this.route('upcoming');
   this.route('settings');
+  this.route('days-off');
 });
 
 export default Router;

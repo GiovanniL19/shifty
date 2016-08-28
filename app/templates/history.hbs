@@ -1,3 +1,5 @@
+{{partial 'search'}}
+
 <div class="history">
   {{#if model}}
     <p class="text-center"><h5>You've been busy!</h5></p>
@@ -29,7 +31,10 @@
         </div>
       </div>
     {{else}}
-      <h6 class="text-center">You have has no past shifts</h6>
+      <div class="text-center nothing">
+        <h1>{{fa-icon "calendar-times-o"}}</h1>
+        <h6>You have has no past shifts</h6>
+      </div>
     {{/each}}
   </div>
 </div>

@@ -19,6 +19,7 @@ export default Ember.Controller.extend({
       url = 'http://api.pexels.com/v1/search?query=summer&per_page=20&page=1';
     }
   
+    controller.set('application.loading', true);
 		$.ajax({
 			url: url,
 			type: 'GET',
@@ -26,15 +27,15 @@ export default Ember.Controller.extend({
 			accepts: 'application/json',
 			success: function(data) {
         let number = Math.floor(Math.random() * 18) + 1;
-        controller.set('backTop', data.photos[number].src.medium);
+        controller.set('backTop', data.photos[number].src.large);
+        controller.set('application.loading', false);
 			},
 			error: function(err) {
 				console.log(err);
 			}
 		});
   
-  }.observes('nextWeekShifts'),
-
+  }.observes('nextWeekShifts.length'),
 
   getWeekData: function(){
     let controller = this;

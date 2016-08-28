@@ -12,8 +12,8 @@ export default Ember.Controller.extend({
   newUser: null,
   newPassword: '',
   cNewPassword: '',
-  //ip: '192.168.0.21',
-  ip: '52.89.48.249',
+  ip: 'localhost',
+  //ip: '52.89.48.249',
   resetPassword: false,
   resetEmail: '',
  /* imageGenerator: function(){
@@ -104,9 +104,21 @@ export default Ember.Controller.extend({
                           user.set('secure.salt', md5Password);
         
                           user.save().then(function(){
-                            controller.set('application.message', 'Please check your emails');
                             controller.set('isLogin', true);
                             controller.set('choose', true);
+                            var credentials = {
+                              identification: user.get('secure.username'),
+                              password: md5Password
+                            };
+
+                            var authenticator = 'authenticator:token';
+
+                            controller.get('session').authenticate(authenticator, credentials).then(() => {
+                              controller.transitionToRoute('overview');
+                            }, (err) => {
+                              console.log(err);
+                              controller.set('application.message', 'There was an error, please login');
+                            });
                           });
                         }
                       },

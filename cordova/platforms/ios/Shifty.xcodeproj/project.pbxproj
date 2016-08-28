@@ -18,6 +18,7 @@
 		939FB1D8067F4ABBB8C71F7B /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B72CA0F693524024AE0308A0 /* CDVStatusBar.m */; };
 		0681E66C88D64FBDB2E11063 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = E38B082AF94E49E0A9B717F2 /* CDVSplashScreen.m */; };
 		89B2B3004F86402884E4C272 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5EEC5001FE4220B1050D1D /* CDVViewController+SplashScreen.m */; };
+		779CCE94E5E2404AA3795DC1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63016CA00472492E809611E5 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		BD5EEC5001FE4220B1050D1D /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		B9EA1D482DB44E56A8B76ED1 /* CDVSplashScreen.h */ = {isa = PBXFileReference; name = "CDVSplashScreen.h"; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		80A1E1DB190045C2B9482510 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		63016CA00472492E809611E5 /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
+				779CCE94E5E2404AA3795DC1 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +143,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63016CA00472492E809611E5 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
