@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   newPassword: '',
   profilePicture: null,
   tempPassSet: function(){
-    if(this.get('application.user.secure.tempPass') === true){
+    if(this.get('application.user.secure.tempPass') === "true"){
       return true;
     }else{
       return false;

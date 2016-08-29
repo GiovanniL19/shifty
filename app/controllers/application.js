@@ -245,7 +245,7 @@ export default Ember.Controller.extend({
       this.store.find('user', this.get('userID')).then(function(user){
         controller.set('loading', false);
         controller.set('user', user);
-        if(user.get('secure.tempPass') === true){
+        if(user.get('secure.tempPass') === 'true'){
           controller.transitionToRoute('settings');
         }
       });
