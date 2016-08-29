@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
     }else{
       return false;
     }
-  }.property(),
+  }.property('application.user'),
   save: function(){
     var user = this.get('application.user');
     
