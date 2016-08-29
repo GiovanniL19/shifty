@@ -1,5 +1,3 @@
-{{partial "filter"}}
-
 <div class="daysOff">
   {{#if application.cardView}}
     <div class="cards">
@@ -23,6 +21,8 @@
       {{/each}}
     </div>
   {{else}}
+    {{partial "filter"}}
+  
     <div class="calendar animated fadeIn">
       <ul class="weekdays">
         {{#each calendarDays as |item|}}

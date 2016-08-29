@@ -10,21 +10,16 @@ export default Ember.Controller.extend({
   
   
 
-  calculateDaysOff: function(month){
+  calculateDaysOff: function(month, year){
     let controller = this;
     
     this.set('calendarDays', []);
     this.set('calendar', []);
-        
-    let year = new Date().getFullYear();
+    
     var user = this.get('application.user');
     
     
-    var chosenMonth = 0;
-    
-    if(month !== undefined){
-      chosenMonth = parseInt(month); 
-    }    
+    var chosenMonth = parseInt(month); 
     
     var days = this.get('application').getDaysInMonthFormatted(parseInt(chosenMonth), year);
     
@@ -47,30 +42,30 @@ export default Ember.Controller.extend({
     this.set('calendarDays', calendarDays);
     chosenMonth += 1;
     this.store.query('shift', {userID: user.get('id'), month: parseInt(chosenMonth), year: year}).then(function(shifts){
-      if(shifts.get('length') === 0){
-        controller.set('holidays', days);
-      }else{
-        shifts.forEach(function(shift){
-          var timeStamp = shift.get('dateTimeStamp');
-          
-          async.eachSeries(controller.get('calendar'), function(date, nextDay){
-            if (date.get('day') === moment.unix(timeStamp).format('DD/MM/YYYY')) {
-              date.set('isActive', false);
-            }
-            nextDay();
-          }), function done(){
-            nextShift();
-          };
-        });
-        controller.set('holidays', days);
-      }
+      shifts.forEach(function(shift){
+        var timeStamp = shift.get('dateTimeStamp');
+        
+        async.eachSeries(controller.get('calendar'), function(date, nextDay){
+          if (date.get('day') === moment.unix(timeStamp).format('DD/MM/YYYY')) {
+            date.set('isActive', false);
+          }
+          nextDay();
+        }), function done(){
+          nextShift();
+        };
+      });
     });
     
   }, 
   actions: {
     selectMonth: function(month){
-      this.calculateDaysOff(month);
-    }
+      this.get('application.month', month);
+      this.calculateDaysOff(month, this.get('application.year'));
+    },
     
+    selectYear: function(year){
+      this.get('application.year', parseInt(year));
+      this.calculateDaysOff(this.get('application.month.value'), parseInt(year));
+    },
   }
 });
