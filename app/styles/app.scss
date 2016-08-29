@@ -20,6 +20,8 @@
 
 $mainColour: #006399;
 $red: #ff5151;
+$green: #4CAF50;
+$lightMainColour: #026da7;
 //$mainColour: #43A047;
 
 *:not(input):not(textarea) {
@@ -65,12 +67,28 @@ $red: #ff5151;
   }
 }
 .filter{
-  background: rgb(2, 109, 167);
-  width:100%;
+  background: white;
   height:4.5em;
   color:white;
   padding: 1em;
   padding-top:1.2em;
+  margin:1em;
+  margin-bottom:0;
+  .form-control{
+    outline: none;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 3px;
+    background: white;
+    color: #686868;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding-bottom: 0.7em;
+  }
   a{
     color:white;
     font-size:1.5em;
@@ -279,8 +297,10 @@ body{
   }
   a{
     color: white;
-    display: block;
+    display: inline-block;
     text-align: right;
+    padding: 0 1em;
+    padding-right:0;
   }
   .action{
     padding: 0.5em 0;
@@ -293,10 +313,14 @@ body{
     font-family: 'Pacifico', cursive;
     font-size: 1.5em;
     text-align:center;
+    padding-left: 1.5em;
   }
   .back {
-    padding-top: 0.7em;
+    margin-top: -0.25em;
     font-size: 1.3em;
+    a{
+      padding-left: 0;
+    }
     i{
       margin-left: -2em;
       position: absolute;
@@ -695,8 +719,8 @@ body{
       margin-top: 5em;
     }
     .card{
-      padding: 1em;
-      min-height: 6em;
+      padding: 0.5em;
+      min-height: 4.5em;
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
       margin: 1em 0em;
       background:white;
@@ -714,7 +738,7 @@ body{
         padding: 0.1em;
         min-width:4em;
         .done{
-          color:#4CAF50;
+          color:$green;
         }
         .upcoming{
           color:#FF9800;
@@ -727,8 +751,8 @@ body{
         .circle{
           display:block;
           border-radius:100%;
-          width:2em;
-          height:2em;
+          width:1em;
+          height:1em;
           text-align:center;
           line-height:2em;
           color:white;
@@ -742,13 +766,15 @@ body{
 //Calendar
 .calendar{
   padding:1em;
+  padding-top:0;
   p{
-    margin-top: 2em;
+    padding: 2em;
+    padding-bottom: 0;
   }
   .weekdays {
     margin: 0;
     background-color: #eeeeee;
-    padding: 2em 0;
+    padding: 1em 0;
   }
 
   .weekdays li {
@@ -773,12 +799,11 @@ body{
     font-size:12px;
     color:#777;
     padding:1em;
-    padding: 2.5em 0;
+    padding: 2.1em 0;
   }
   .days li .active {
-    padding: 1.5em;
+    padding: 1em;
     background: $mainColour;
     color: white !important;
-    border-radius: 100%;
   }
 }

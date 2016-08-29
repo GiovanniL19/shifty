@@ -15,11 +15,21 @@
       {{/if}}
     </div>
     
-    <div class="col-xs-6 text-center title">
+    <div class="col-xs-5 text-center title">
       {{title}}
     </div>
     
-    <div class="col-xs-2 text-right action">
+    <div class="col-xs-3 text-right action">
+      {{#if action.calendarView}}
+        <a {{action 'toggleView'}}>
+          {{#if cardView}}
+            {{fa-icon "calendar-o"}}
+          {{else}}
+            {{fa-icon "list"}}
+          {{/if}}
+        </a>
+      {{/if}}
+      
       {{#if action.add}}
         {{#link-to 'add-shift'}}
           {{fa-icon "plus"}}

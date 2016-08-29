@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
     add: true,
     nextAddShift: false,
     saveSettings: false,
+    calendarView: false,
   },
   loading: false,
   percentageDaysThisMonth: 0,
@@ -134,7 +135,8 @@ export default Ember.Controller.extend({
     this.set('action', {
       add: false,
       nextAddShift: false,
-      saveSettings: false
+      saveSettings: false,
+      calendarView: false
     });
   },
   
@@ -162,6 +164,9 @@ export default Ember.Controller.extend({
     }
   },
   actions: {
+    toggleView: function(){
+      this.set('cardView', !this.get('cardView'));
+    },
     invalidateSession: function(){
       this.get('session').invalidate();
       this.get("sideMenu").close();

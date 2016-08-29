@@ -47,6 +47,9 @@ export default Ember.Controller.extend({
   calculateDaysOff: function(month){
     let controller = this;
     
+    this.set('calendarDays', []);
+    this.set('calendar', []);
+        
     let year = new Date().getFullYear();
     var user = this.get('application.user');
     

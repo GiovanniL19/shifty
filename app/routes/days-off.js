@@ -7,6 +7,7 @@ export default Ember.Route.extend({
       
       controller.get('application').clearAction();
       controller.set('application.action.add', true);
+      controller.set('application.action.calendarView', true);
       controller.calculateDaysOff();
       controller.set('application.showBack', false);
     }else{

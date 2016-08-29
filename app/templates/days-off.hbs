@@ -9,7 +9,6 @@
 </div>
 
 <div class="daysOff">
-  <p class="text-center">The blue bubbles represent your days off!</p>
   {{#if application.cardView}}
     <div class="cards">
       {{#each holidays as |day|}}
@@ -20,7 +19,7 @@
               <strong><small>Day Off</small></strong>
             </div>
   
-            <span class="dayNight col-xs-3 text-center"><span class="circle" style="background:#63bd41;">{{fa-icon 'thumbs-up'}}</span></span>
+            <span class="dayNight col-xs-3 text-center"><span class="circle" style="background:#4CAF50;"></span></span>
 
           </div>
         </div>
@@ -32,7 +31,7 @@
       {{/each}}
     </div>
   {{else}}
-    <div class="calendar">
+    <div class="calendar animated fadeIn">
       <ul class="weekdays">
         {{#each calendarDays as |item|}}
           <li>{{item}}</li>
@@ -48,6 +47,8 @@
           {{/unless}}
         {{/each}}
       </ul>
+      
+      <p class="text-center">The blue squares represent your days off!</p>
     </div>
     
   {{/if}}
