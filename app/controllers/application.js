@@ -23,18 +23,92 @@ export default Ember.Controller.extend({
   percentageNightsThisMonth: 0,
   
   cardView: false,
-  getDaysInMonth: function(month, year) {
+
+  months: [
+    {label: 'Januray', value: 0},
+    {label: 'Febuary', value: 1},
+    {label: 'March', value: 2},
+    {label: 'April', value: 3},
+    {label: 'May', value: 4},
+    {label: 'June', value: 5},
+    {label: 'July', value: 6},
+    {label: 'August', value: 7},
+    {label: 'September', value: 8},
+    {label: 'October', value: 9},
+    {label: 'November', value: 10},
+    {label: 'December', value: 11},
+    
+  ],
+  
+  getDaysInMonthFormatted: function(month, year) {
     var date = new Date(year, month, 1);
     var days = [];
-  
     while (date.getMonth() === month) {
       days.push(moment(new Date(date)).format('DD/MM/YYYY'));
       date.setDate(date.getDate() + 1);
     }
-    
     return days;
-    
   },
+  getDaysInMonth: function(month, year) {
+    var date = new Date(year, month, 1);
+    var days = [];
+    while (date.getMonth() === month) {
+      days.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+    return days;
+  },
+  
+  
+  calculateShifts: function(month, shifts, controller){
+    
+    controller.set('calendarDays', []);
+    controller.set('calendar', []);
+        
+    let year = new Date().getFullYear();
+    var user = this.get('user');
+    
+    
+    var chosenMonth = 0;
+    
+    if(month !== undefined){
+      chosenMonth = parseInt(month); 
+    }    
+    
+    var days = this.getDaysInMonthFormatted(parseInt(chosenMonth), year);
+    
+    var calendarDays = [];
+    
+    var unFormattedDays = this.getDaysInMonth(parseInt(chosenMonth), year);
+    unFormattedDays.forEach(function(day){
+      if(calendarDays.length !== 7){
+        calendarDays.push(moment(day).format('dd'));
+      }
+      
+      var object = Ember.Object.create({
+          day: moment(day).format('DD/MM/YYYY'), 
+          dayFormatted: moment(day).format('DD'), 
+          isActive: false
+       });
+      controller.get('calendar').push(object);
+    });
+    
+    controller.set('calendarDays', calendarDays);
+    chosenMonth += 1;
+    shifts.forEach(function(shift){
+      var timeStamp = shift.get('dateTimeStamp');
+      
+      async.eachSeries(controller.get('calendar'), function(date, nextDay){
+        if (date.get('day') === moment.unix(timeStamp).format('DD/MM/YYYY')) {
+          date.set('isActive', true);
+        }
+        nextDay();
+      }), function done(){
+        nextShift();
+      };
+    });
+    
+  }, 
   
   
   generatePercentages: function(){

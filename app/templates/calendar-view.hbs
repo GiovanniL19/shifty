@@ -1,0 +1,17 @@
+<div class="calendar animated fadeIn">
+  <ul class="weekdays">
+    {{#each calendarDays as |item|}}
+      <li>{{item}}</li>
+    {{/each}}
+  </ul>
+
+  <ul class="days"> 
+    {{#each calendar as |item|}}
+      {{#unless item.isActive}}
+        <li>{{item.dayFormatted}}</li>
+      {{else}}
+        <li><span class="active">{{item.dayFormatted}}</span></li>
+      {{/unless}}
+    {{/each}}
+  </ul>
+</div>

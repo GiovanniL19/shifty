@@ -1,12 +1,4 @@
-<div class="filter">
-  <select class="form-control" onchange={{action "selectMonth" value="target.value"}}>
-    {{#each months as |item|}}
-      <option value={{item.value}}>
-        {{item.label}}
-      </option>
-    {{/each}}
-  </select>
-</div>
+{{partial "filter"}}
 
 <div class="daysOff">
   {{#if application.cardView}}
@@ -41,9 +33,9 @@
       <ul class="days"> 
         {{#each calendar as |item|}}
           {{#unless item.isActive}}
-            <li>{{item.day}}</li>
+            <li>{{item.dayFormatted}}</li>
           {{else}}
-            <li><span class="active">{{item.day}}</span></li>
+            <li><span class="active">{{item.dayFormatted}}</span></li>
           {{/unless}}
         {{/each}}
       </ul>

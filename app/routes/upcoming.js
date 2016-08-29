@@ -8,6 +8,7 @@ export default Ember.Route.extend({
     this.store.query('shift', {showUpcoming: 'true', user: controller.get('application.user.id')}).then(function(shifts){
       controller.set('model', shifts.sortBy('dateTimeStamp'));
       controller.set('application.loading', false);
+      controller.get('application').calculateShifts(0, controller.get('model'), controller);
     });
   },
   setupController: function(controller) {
@@ -17,7 +18,7 @@ export default Ember.Route.extend({
       
       controller.get('application').clearAction();
       controller.set('application.action.add', true);
-      
+      controller.set('application.action.calendarView', true);
       controller.set('application.showBack', true);
     }else{
       controller.transitionToRoute('login');

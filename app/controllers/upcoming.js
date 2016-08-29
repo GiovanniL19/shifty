@@ -4,7 +4,13 @@ export default Ember.Controller.extend({
   application: Ember.inject.controller(),
   session: Ember.inject.service('session'),
   
+  calendar: [],
+  calendarDays: [],
+  
   actions:{
+    selectMonth: function(month){
+      this.get('application').calculateShifts(month, this.get('model'), this);
+    },
     removeShift: function(shift){
       let controller = this;
       if(confirm('Are you sure you want to remove this shift?')){

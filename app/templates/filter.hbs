@@ -1,0 +1,9 @@
+<div class="filter">
+  <select class="form-control" onchange={{action "selectMonth" value="target.value"}}>
+    {{#each application.months as |item|}}
+      <option value={{item.value}}>
+        {{item.label}}
+      </option>
+    {{/each}}
+  </select>
+</div>
