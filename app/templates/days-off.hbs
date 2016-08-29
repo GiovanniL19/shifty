@@ -9,25 +9,46 @@
 </div>
 
 <div class="daysOff">
-    
-  <div class="cards">
-    {{#each holidays as |day|}}
-      <div class="col-xs-6">
-        <div class="card animated fadeIn" id="{{shift.id}}">
-          <div class="title col-xs-9">
-            <strong>{{day}}</strong><br>
-            <strong><small>Day Off</small></strong>
-          </div>
+  <p class="text-center">The blue bubbles represent your days off!</p>
+  {{#if application.cardView}}
+    <div class="cards">
+      {{#each holidays as |day|}}
+        <div class="col-xs-6">
+          <div class="card animated fadeIn" id="{{shift.id}}">
+            <div class="title col-xs-9">
+              <strong>{{day}}</strong><br>
+              <strong><small>Day Off</small></strong>
+            </div>
   
-          <span class="dayNight col-xs-3 text-center"><span class="circle" style="background:#63bd41;">{{fa-icon 'thumbs-up'}}</span></span>
+            <span class="dayNight col-xs-3 text-center"><span class="circle" style="background:#63bd41;">{{fa-icon 'thumbs-up'}}</span></span>
 
+          </div>
         </div>
-      </div>
-    {{else}}
-      <div class="text-center nothing">
-        <h1>{{fa-icon "frown-o"}}</h1>
-        <h6>You have no days off</h6>
-      </div>
-    {{/each}}
-  </div>
+      {{else}}
+        <div class="text-center nothing">
+          <h1>{{fa-icon "frown-o"}}</h1>
+          <h6>You have no days off</h6>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="calendar">
+      <ul class="weekdays">
+        {{#each calendarDays as |item|}}
+          <li>{{item}}</li>
+        {{/each}}
+      </ul>
+
+      <ul class="days"> 
+        {{#each calendar as |item|}}
+          {{#unless item.isActive}}
+            <li>{{item.day}}</li>
+          {{else}}
+            <li><span class="active">{{item.day}}</span></li>
+          {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    
+  {{/if}}
 </div>

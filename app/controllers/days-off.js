@@ -20,11 +20,25 @@ export default Ember.Controller.extend({
     
   ],
   holidays: [],
-  getDaysInMonth: function(month, year) {
+  calendar: [],
+  calendarDays: [],
+  
+  occurrences: Ember.A(),
+  
+  getDaysInMonthFormatted: function(month, year) {
     var date = new Date(year, month, 1);
      var days = [];
      while (date.getMonth() === month) {
         days.push(moment(new Date(date)).format('DD/MM/YYYY'));
+        date.setDate(date.getDate() + 1);
+     }
+     return days;
+  },
+  getDaysInMonth: function(month, year) {
+    var date = new Date(year, month, 1);
+     var days = [];
+     while (date.getMonth() === month) {
+        days.push(new Date(date));
         date.setDate(date.getDate() + 1);
      }
      return days;
@@ -43,21 +57,36 @@ export default Ember.Controller.extend({
       chosenMonth = parseInt(month); 
     }    
     
-    var days = this.getDaysInMonth(parseInt(chosenMonth), year);
+    var days = this.getDaysInMonthFormatted(parseInt(chosenMonth), year);
     
+    var calendarDays = [];
+    
+    var unFormattedDays = this.getDaysInMonth(parseInt(chosenMonth), year);
+    unFormattedDays.forEach(function(day){
+      if(calendarDays.length !== 7){
+        calendarDays.push(moment(day).format('dd'));
+      }
+      
+      var object = Ember.Object.create({
+         day: moment(day).format('DD'), 
+          isActive: true
+       });
+      controller.get('calendar').push(object);
+    });
+    
+    this.set('calendarDays', calendarDays);
     chosenMonth += 1;
     this.store.query('shift', {userID: user.get('id'), month: parseInt(chosenMonth), year: year}).then(function(shifts){
       if(shifts.get('length') === 0){
         controller.set('holidays', days);
       }else{
         shifts.forEach(function(shift){
-          var date = shift.get('dateTimeStamp');
+          var timeStamp = shift.get('dateTimeStamp');
           
-          async.eachSeries(days, function(day, nextDay){
-            var i = days.indexOf(day);
-            if (days[i] === moment.unix(date).format('DD/MM/YYYY')) {
-              days.splice(i, 1);
-              console.log('splice');
+          async.eachSeries(controller.get('calendar'), function(date, nextDay){
+            debugger;
+            if (date.get('day') === moment.unix(timeStamp).format('DD')) {
+              date.set('isActive', false);
             }
             nextDay();
           }), function done(){
@@ -65,7 +94,6 @@ export default Ember.Controller.extend({
           };
         });
         controller.set('holidays', days);
-        console.log(days);
       }
     });
     

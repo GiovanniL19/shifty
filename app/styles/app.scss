@@ -737,3 +737,48 @@ body{
     }
   }
 }
+
+//9.0
+//Calendar
+.calendar{
+  padding:1em;
+  p{
+    margin-top: 2em;
+  }
+  .weekdays {
+    margin: 0;
+    background-color: #eeeeee;
+    padding: 2em 0;
+  }
+
+  .weekdays li {
+    display: inline-block;
+    width: 13%;
+    color: #555;
+    text-align: center;
+  }
+
+  .days {
+    padding: 10px 0;
+    background: white;
+    margin: 0;
+  }
+
+  .days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color:#777;
+    padding:1em;
+    padding: 2.5em 0;
+  }
+  .days li .active {
+    padding: 1.5em;
+    background: $mainColour;
+    color: white !important;
+    border-radius: 100%;
+  }
+}

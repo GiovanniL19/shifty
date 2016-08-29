@@ -21,6 +21,7 @@ export default Ember.Controller.extend({
   percentageDaysThisMonth: 0,
   percentageNightsThisMonth: 0,
   
+  cardView: false,
   getDaysInMonth: function(month, year) {
     var date = new Date(year, month, 1);
     var days = [];
