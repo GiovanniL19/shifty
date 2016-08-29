@@ -9,7 +9,13 @@ export default Ember.Controller.extend({
   
   actions: {
     selectMonth: function(month){
-      this.get('application').calculateShifts(month, this.get('model'), this);
+      this.get('application.month', month);
+      this.get('application').calculateShifts(month, this.get('application.year'), this.get('model'), this);
+    },
+    
+    selectYear: function(year){
+      this.get('application.year', parseInt(year));
+      this.get('application').calculateShifts(this.get('application.month'), parseInt(year), this.get('model'), this);
     },
     removeShift: function(shift){
       let controller = this;

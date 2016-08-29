@@ -39,6 +39,24 @@ export default Ember.Controller.extend({
     {label: 'December', value: 11},
     
   ],
+  years: [],
+  year: 0,
+  month: 0,
+  getPastAndNextYears: function(){
+    var years = [];
+    for(var i = 4; i >= 0; i--){
+      var date = new Date();
+      date.setFullYear(date.getFullYear() - i); 
+      years.push(moment(date).format('YYYY'));
+    }
+    
+    for(var i = 1; i <= 4; i++){
+      var date = new Date();
+      date.setFullYear(date.getFullYear() + i); 
+      years.push(moment(date).format('YYYY'));
+    }
+    this.set('years', years);
+  },
   
   getDaysInMonthFormatted: function(month, year) {
     var date = new Date(year, month, 1);
@@ -60,22 +78,17 @@ export default Ember.Controller.extend({
   },
   
   
-  calculateShifts: function(month, shifts, controller){
+  calculateShifts: function(month, year, shifts, controller){
     
     controller.set('calendarDays', []);
     controller.set('calendar', []);
-        
-    let year = new Date().getFullYear();
+    
     var user = this.get('user');
-    
-    
-    var chosenMonth = 0;
-    
-    if(month !== undefined){
-      chosenMonth = parseInt(month); 
-    }    
-    
+    var chosenMonth = month;
     var days = this.getDaysInMonthFormatted(parseInt(chosenMonth), year);
+    
+    console.log(parseInt(chosenMonth));
+    console.log(year);
     
     var calendarDays = [];
     
@@ -95,6 +108,7 @@ export default Ember.Controller.extend({
     
     controller.set('calendarDays', calendarDays);
     chosenMonth += 1;
+    
     shifts.forEach(function(shift){
       var timeStamp = shift.get('dateTimeStamp');
       

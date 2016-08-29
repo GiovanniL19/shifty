@@ -15,6 +15,7 @@ export default Ember.Route.extend({
       controller.transitionToRoute('login');
     }else{
       controller.transitionToRoute('overview');
+      controller.getPastAndNextYears();
     }   
   }  
 });

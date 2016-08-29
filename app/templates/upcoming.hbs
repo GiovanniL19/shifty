@@ -1,5 +1,3 @@
-{{partial "filter"}}
-
 <div class="upComing">
   {{#if application.cardView}}
     {{#if model}}
@@ -40,6 +38,7 @@
     </div>
   
   {{else}}
+    {{partial "filter"}}
     {{partial "calendar-view"}}
     <p class="text-center">The blue squares represent your shifts</p>
   {{/if}}
