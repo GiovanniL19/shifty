@@ -1,0 +1,13 @@
+<div class="presets">
+  {{#liquid-if newPreset class="slide"}}
+  
+  
+  {{else}}
+    {{#each model as |preset|}}
+    
+    {{else}}
+      <h5>You have no presets</h5>
+    {{/each}}
+    
+  {{/liquid-if}}
+</div>

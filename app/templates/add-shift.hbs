@@ -1,6 +1,55 @@
 <div class="add-shift">
   {{#liquid-if sectionOne class="nextPage"}}
-    {{bootstrap-datepicker-inline multidate=true value=dates todayBtn=true todayHighlight=true}}
+    <div class="filter">
+      <div class="col-xs-6">
+        <select class="form-control" onchange={{action "selectMonth" value="target.value"}}>
+          <option value={{month.value}} selected=true>
+            {{month.label}}
+          </option>
+      
+          {{#each months as |item|}}
+            <option value={{item.value}}>
+              {{item.label}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+  
+      <div class="col-xs-6">
+        <select class="form-control" onchange={{action "selectYear" value="target.value"}} selected={{year}}>
+          <option value={{year}} selected=true>
+            {{year}}
+          </option>
+      
+          {{#each years as |item|}}
+            <option value={{item}}>
+              {{item}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="calendar animated fadeIn">
+      <ul class="weekdays">
+        {{#each calendarDays as |item|}}
+          <li>{{item}}</li>
+        {{/each}}
+      </ul>
+
+      <ul class="days"> 
+        {{#each calendar as |item|}}
+          {{#if item.isSelected}}
+            <li class=" {{if item.isToday 'today'}}" {{action "selectDate" item}}><span class="active">{{item.dayFormatted}}</span></li>
+          {{else}}
+            {{#if item.isPreSelected}}
+              <li><span class="preSelected {{if item.isToday 'today'}}">{{item.dayFormatted}}</span></li>
+            {{else}}
+              <li {{action "selectDate" item}} class="{{if item.isToday 'today'}}">{{item.dayFormatted}}</li>
+            {{/if}}
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
   {{else}}
     <div class="col-xs-12 text-center options">
       <h4>Step 2.</h4>

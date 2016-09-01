@@ -5,6 +5,10 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   newPassword: '',
   profilePicture: null,
+  tab: {
+    account: true,
+    presets: false,
+  },
   tempPassSet: function(){
     if(this.get('application.user.secure.tempPass') === "true"){
       return true;

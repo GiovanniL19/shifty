@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('upcoming');
   this.route('settings');
   this.route('days-off');
+  this.route('presets');
 });
 
 export default Router;

@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
   cardView: false,
 
   months: [
-    {label: 'Januray', value: 0},
+    {label: 'January', value: 0},
     {label: 'Febuary', value: 1},
     {label: 'March', value: 2},
     {label: 'April', value: 3},

@@ -16,6 +16,9 @@ export default Ember.Route.extend({
     }else{
       controller.transitionToRoute('overview');
       controller.getPastAndNextYears();
+      
+      let addShiftController = this.controllerFor('add-shift');
+      addShiftController.getPastAndNextYears();
     }   
   }  
 });
