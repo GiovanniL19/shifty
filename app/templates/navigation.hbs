@@ -30,9 +30,22 @@
         </a>
       {{/if}}
       
+      {{#if action.addPreset}}
+        {{#if settings.newPreset}}
+          <a {{action "toggleAddPresets"}}>
+            {{fa-icon "list"}}
+          </a>
+        {{else}}
+          <a {{action "toggleAddPresets"}}>
+            {{fa-icon "plus-square"}}
+          </a>
+        {{/if}}
+        
+      {{/if}}
+      
       {{#if action.add}}
         {{#link-to 'add-shift'}}
-          {{fa-icon "plus"}}
+          {{fa-icon "plus-square"}}
         {{/link-to}}
       {{/if}}
       

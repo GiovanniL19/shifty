@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  activate: function() {
+    this._super();
+    window.scrollTo(0,0);
+  },
   deactivate: function(){
     let controller = this.controllerFor('settings');
     controller.set('newPassword', '');

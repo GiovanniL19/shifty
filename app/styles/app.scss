@@ -375,7 +375,7 @@ body{
     padding-top:1em;
     .lg-card{
       padding: 1em;
-      min-height: 6em;
+      min-height: 7em;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       margin: 1em 0em;
       background: white;
@@ -386,7 +386,7 @@ body{
     }
     .card{
       padding: 1em;
-      min-height: 6em;
+      min-height: 7em;
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
       margin: 1em 0em;
       background:white;
@@ -521,14 +521,14 @@ body{
   .cards{
     .lg-card{
       padding: 1em;
-      min-height: 6em;
+      min-height: 7em;
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
       margin: 1em 0em;
       background:white;
     }
     .card{
       padding: 1em;
-      min-height: 6em;
+      min-height: 7em;
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
       margin: 1em 0em;
       background:white;
@@ -577,14 +577,14 @@ body{
   .cards{
     .lg-card{
       padding: 1em;
-      min-height: 6em;
+      min-height: 7em;
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
       margin: 1em 0em;
       background:white;
     }
     .card{
       padding: 1em;
-      min-height: 6em;
+      min-height: 7em;
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
       margin: 1em 0em;
       background:white;
@@ -631,6 +631,7 @@ body{
   color: #6d6d6d;
   background: white;
   padding: 1em;
+  height:93vh;
   .imageUpload {
     position: relative;
     overflow: hidden;
@@ -702,7 +703,7 @@ body{
   }
   
   .tabs{
-    margin-bottom:2em;
+    margin:1em 0 2em 0;
     .btn-default{
       background-color: white;
       padding: 1em;
@@ -726,6 +727,9 @@ body{
       }
     }
   }
+  .form-control{
+   height:5em; 
+  }
 }
 
 //8.0
@@ -736,7 +740,7 @@ body{
     padding-top:1em;
     .lg-card{
       padding: 1em;
-      min-height: 6em;
+      min-height: 7em;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       margin: 1em 0em;
       background: white;

@@ -1,45 +1,50 @@
 <div class="settings col-xs-12">
   <div class="col-xs-12 tabs">
     <div class="col-xs-6">
-        <button class="btn {{if tab.account 'btn-primary'}} {{unless tab.account 'btn-default'}}">Account</button>
+        <button class="btn {{if tab.account 'btn-primary'}} {{unless tab.account 'btn-default'}}" {{action 'tabChange' 'account'}}>Account</button>
     </div>
   
     <div class="col-xs-6">
-      <button class="btn {{if tab.presets 'btn-primary'}} {{unless tab.presets 'btn-default'}}">Presets</button>
+      <button class="btn {{if tab.presets 'btn-primary'}} {{unless tab.presets 'btn-default'}}" {{action 'tabChange' 'presets'}}>Presets</button>
     </div>
   </div>
   
-  <div class="col-xs-12">
-    <div class="text-center center">
-      {{#if tempPassSet}}
-        <div class="alert alert-danger">Please set your new password</div>
-        <small>Password</small>
-        {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
+  {{#if tab.account}}
+    <div class="col-xs-12">
+      <div class="text-center center">
+        {{#if tempPassSet}}
+          <div class="alert alert-danger">Please set your new password</div>
+          <small>Password</small>
+          {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
+          <br><br>
+        {{/if}}
+        <div class="profilePicture" style="background:url('{{application.user.identity.image}}'); background-size:cover;"></div>
+        <br>
+        <div class="imageUpload btn btn-default">
+            <span>Upload Picture</span>
+            {{upload-file type="file" class="upload" accept="image/*" file=profilePicture fileSize=imageSize fileType=imageType accept="image/*;capture=camera"}}
+        </div>    
         <br><br>
-      {{/if}}
-      <div class="profilePicture" style="background:url('{{application.user.identity.image}}'); background-size:cover;"></div>
-      <br>
-      <div class="imageUpload btn btn-default">
-          <span>Upload Picture</span>
-          {{upload-file type="file" class="upload" accept="image/*" file=profilePicture fileSize=imageSize fileType=imageType accept="image/*;capture=camera"}}
-      </div>    
-      <br><br>
-      <small>First Name</small>
-      {{input type="text" class="form-control" placeholder="First Name" value=application.user.identity.firstName}}
-      <br><br>
-      <small>Last Name</small>
-      {{input type="text" class="form-control" placeholder="Last Name" value=application.user.identity.lastName}}
-      <br><br>
-      <small>Email</small>
-      {{input type="text" class="form-control" readonly=true placeholder="Email" value=application.user.identity.email}}
-      <br><br>
-      <small>User Name</small>
-      {{input type="text" class="form-control" placeholder="Username" readonly=true value=application.user.secure.username}}
-      <br><br>
-      {{#unless tempPassSet}}
-        <small>Password</small>
-        {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
-      {{/unless}}
+        <small>First Name</small>
+        {{input type="text" class="form-control" placeholder="First Name" value=application.user.identity.firstName}}
+        <br><br>
+        <small>Last Name</small>
+        {{input type="text" class="form-control" placeholder="Last Name" value=application.user.identity.lastName}}
+        <br><br>
+        <small>Email</small>
+        {{input type="text" class="form-control" readonly=true placeholder="Email" value=application.user.identity.email}}
+        <br><br>
+        <small>User Name</small>
+        {{input type="text" class="form-control" placeholder="Username" readonly=true value=application.user.secure.username}}
+        <br><br>
+        {{#unless tempPassSet}}
+          <small>Password</small>
+          {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
+        {{/unless}}
+      </div>
     </div>
-  </div>
+    
+  {{else}}
+    {{partial 'presets'}}
+  {{/if}}
 </div>

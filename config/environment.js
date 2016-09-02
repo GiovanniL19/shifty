@@ -54,17 +54,22 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+  	ENV['ember-simple-auth'] = {
+      authorizer: 'authorizer:token'
+    };
+    ENV['ember-simple-auth-token'] = {
+  		serverTokenEndpoint: 'http://52.89.48.249:3002/auth',
+    };
+  
+  }else{
+  	ENV['ember-simple-auth'] = {
+      authorizer: 'authorizer:token'
+    };
+    ENV['ember-simple-auth-token'] = {
+      serverTokenEndpoint: 'http://localhost:3002/auth'
+    };
+  
   }
-  
-	ENV['ember-simple-auth'] = {
-    authorizer: 'authorizer:token'
-  };
-  ENV['ember-simple-auth-token'] = {
-		//serverTokenEndpoint: 'http://52.89.48.249:3002/auth',
-    serverTokenEndpoint: 'http://localhost:3002/auth'
-  };
-  
 
   return ENV;
 };

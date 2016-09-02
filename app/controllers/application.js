@@ -17,12 +17,13 @@ export default Ember.Controller.extend({
     nextAddShift: false,
     saveSettings: false,
     calendarView: false,
+    addPreset: false
   },
   loading: false,
   percentageDaysThisMonth: 0,
   percentageNightsThisMonth: 0,
   
-  cardView: false,
+  cardView: true,
 
   months: [
     {label: 'January', value: 0},
@@ -86,9 +87,6 @@ export default Ember.Controller.extend({
     var user = this.get('user');
     var chosenMonth = month;
     var days = this.getDaysInMonthFormatted(parseInt(chosenMonth), year);
-    
-    console.log(parseInt(chosenMonth));
-    console.log(year);
     
     var calendarDays = [];
     
@@ -224,7 +222,8 @@ export default Ember.Controller.extend({
       add: false,
       nextAddShift: false,
       saveSettings: false,
-      calendarView: false
+      calendarView: false,
+      addPreset: false
     });
   },
   
@@ -252,6 +251,9 @@ export default Ember.Controller.extend({
     }
   },
   actions: {
+    toggleAddPresets: function(){
+      this.set('settings.newPreset', !this.get('settings.newPreset'));
+    },
     toggleView: function(){
       this.set('cardView', !this.get('cardView'));
     },

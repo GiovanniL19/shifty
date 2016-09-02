@@ -9,6 +9,8 @@ export default Ember.Route.extend({
     if(!online){
       controller.set('isOffline');
     }
+    this._super();
+    window.scrollTo(0,0);
   },
   setupController: function(controller){
     if(!controller.get('session.isAuthenticated')){

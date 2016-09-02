@@ -10,6 +10,9 @@ export default Ember.Route.extend({
        
       controller.get('application').calculateShifts(controller.get('application.month.value'), controller.get('application.year'), controller.get('model'), controller);
     });
+    
+    this._super();
+    window.scrollTo(0,0);
   },
   setupController: function(controller) {
     if(controller.get('session.isAuthenticated')){

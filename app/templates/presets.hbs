@@ -1,13 +1,23 @@
 <div class="presets">
-  {{#liquid-if newPreset class="slide"}}
-  
-  
+  {{#if newPreset}}
+    <p>Presets allow you to quickly set the reference, start and end date wheh adding shifts. For example you could create a preset titled "Long Day".</p>
+    {{input type="text" class="form-control" placeholder="Title"}}
+    {{input type="text" class="form-control" placeholder="Shift Reference"}}
+    <div class="col-xs-6">
+      {{input type="time" class="form-control" placeholder="Start Time"}}
+    </div>
+    <div class="col-xs-6">
+      {{input type="time" class="form-control" placeholder="End Time"}}
+    </div>
+    <div class="text-center center">
+      <button class="btn btn-default">Add</button>
+    </div>
   {{else}}
     {{#each model as |preset|}}
-    
+      
     {{else}}
       <h5>You have no presets</h5>
     {{/each}}
     
-  {{/liquid-if}}
+  {{/if}}
 </div>

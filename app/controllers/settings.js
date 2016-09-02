@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
     account: true,
     presets: false,
   },
+  newPreset: false,
   tempPassSet: function(){
     if(this.get('application.user.secure.tempPass') === "true"){
       return true;
@@ -42,8 +43,8 @@ export default Ember.Controller.extend({
     var controller = this;
   
     try {
-      if(this.get('imageSize') > 600000){
-        alert('Image size to large, please do not exceed 600KB');
+      if(this.get('imageSize') > 1000000){
+        alert('Image size to large, please do not exceed 1MB');
       }else{
         if(this.get('imageType') === 'image/jpeg' || this.get('imageType') === 'image/jpg' || this.get('imageType') === 'image/png'){
           controller.set('application.user.identity.image', this.get('profilePicture'));
@@ -55,5 +56,22 @@ export default Ember.Controller.extend({
       console.log('No image selected');
     }
 
-  }.observes('profilePicture')
+  }.observes('profilePicture'),
+  actions: {
+    tabChange: function(option){
+      this.set('tab', {
+        account: false,
+        presets: false
+      });
+      
+      if(option === "account"){
+        this.set('application.action.saveSettings', true);
+        this.set('application.action.addPreset', false);
+      }else{
+        this.set('application.action.saveSettings', false);
+        this.set('application.action.addPreset', true);
+      }
+      this.set('tab.' + option, true);
+    }
+  }
 });
