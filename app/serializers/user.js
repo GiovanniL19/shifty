@@ -3,6 +3,10 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
     shifts: {
       serialize: 'ids',
       deserialize: 'ids'    
+    },
+    presets: {
+      serialize: 'ids',
+      deserialize: 'ids'    
     }
   }
 });

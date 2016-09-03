@@ -68,34 +68,7 @@ $lightMainColour: #026da7;
     }
   }
 }
-.filter{
-  background: white;
-  height:4.5em;
-  color:white;
-  padding: 1em;
-  padding-top:1.2em;
-  margin: 1em 0;
-  margin-bottom: 0;
-  .form-control{
-    outline: none;
-    border: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border-radius: 3px;
-    background: white;
-    color: #686868;
-    padding: 0;
-    text-align: center;
-    width: 100%;
-    display: block;
-    padding-bottom: 0.7em;
-  }
-  a{
-    color:white;
-    font-size:1.5em;
-  }
-}
+
 .alert-danger{
   border-radius:0;
   color:white;
@@ -240,9 +213,9 @@ body{
 }
 .nav{
   .account {
-    background: #151515;
+    background: #313131;
     height: 10em;
-    color: white;
+    color: #afafaf;
     padding: 1em;
     box-shadow: 1px 1px 7px #9c9c9c;
     padding-top: 2em;
@@ -431,12 +404,22 @@ body{
 //4.0
 //Add Shift
 .add-shift{
-  margin: 1em;
   color: #6d6d6d;
-  background: white;
-  padding: 1em;
+  .suggestions{
+    height:4.5em;
+    overflow-y: scroll;
+    .suggestion{
+      display:block;
+      padding:0.4em;
+    }
+  }
   .options{
-    margin-top:1em;
+    .tip{
+      margin-top:2em;
+    }
+    margin:1em;
+    padding:1em;
+    background:white;
   }
   .btn-default{
     background-color: white;
@@ -517,7 +500,6 @@ body{
 //5.0
 //History
 .history{
-  padding: 1em;
   .cards{
     .lg-card{
       padding: 1em;
@@ -573,7 +555,6 @@ body{
 //6.0
 //Upcoming
 .upComing{
-  padding: 1em;
   .cards{
     .lg-card{
       padding: 1em;
@@ -631,7 +612,7 @@ body{
   color: #6d6d6d;
   background: white;
   padding: 1em;
-  height:93vh;
+  height:100%;
   .imageUpload {
     position: relative;
     overflow: hidden;
@@ -701,35 +682,6 @@ body{
     border-radius:0;
     border-bottom:2px solid $mainColour;
   }
-  
-  .tabs{
-    margin:1em 0 2em 0;
-    .btn-default{
-      background-color: white;
-      padding: 1em;
-      color: $mainColour;
-      padding: 1em 2em;
-      width:100%;
-      margin-top:0;
-      &:focus{
-        outline:0;
-      }
-    }
-    .btn-primary{
-      background-color: $mainColour;
-      padding: 1em;
-      color: white;
-      padding: 1em 2em;
-      width:100%;
-      margin-top:0;
-      &:focus{
-        outline:0;
-      }
-    }
-  }
-  .form-control{
-   height:5em; 
-  }
 }
 
 //8.0
@@ -796,51 +748,57 @@ body{
 //9.0
 //Calendar
 .calendar{
-  padding:1em;
-  padding-top:0;
+  background: #f9f9f9;
+  height:100%;
+  margin-top: -1.2em;
   p{
     padding: 2em;
     padding-bottom: 0;
   }
   .weekdays {
     margin: 0;
-    background-color: #eeeeee;
-    padding: 1em 0;
+    border-bottom:1px solid #ccc;
+    background: #3c3c3c;
+    padding:2em 1em;
     li {
       display: inline-block;
       width: 13%;
       color: #555;
+      color: #afafaf;
       text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
     }
   }
 
   .days {
-    padding: 10px 0;
-    background: white;
     margin: 0;
+    padding:1em;
     li{
       list-style-type: none;
       display: inline-block;
       width: 13%;
       text-align: center;
       margin-bottom: 5px;
-      font-size:12px;
+      font-size:13px;
       color:#777;
       padding:1em;
       padding: 2.1em 0;
       .active {
         padding: 1em;
-        background: $mainColour;
+        background: orange;
         color: white !important;
       }
       .preSelected{
         padding: 1em;
-        background: orange;
+        background: rgba(255, 165, 0, 0.24);
         color: white !important;
       }
     }
     .today{
-      border: 1px solid #e4e4e4;
+      padding: 1em;
+      background: #313131;
+      color: white;
     }
   }
 }
@@ -849,4 +807,107 @@ body{
 //Presets
 .presets{
   padding:1em;
+  color: #6d6d6d;
+  background: white;
+  height:92vh;
+  .form-control{
+    margin:2em 0;
+  }
+  .btn{
+    margin-top:1em;
+    width:100%;
+  }
+  p{
+    margin-top:1em;
+  }
+  ul{
+    list-style: none;
+    left: 0;
+    width: 100%;
+    margin-top: 2em;
+    line-height: 3em;
+    .bubble{
+      background: #383838;
+      border-radius: 10px;
+      color: white;
+    }
+  }
+  .btn-default{
+    background-color: white;
+    padding: 1em;
+    color: $mainColour;
+    padding: 1em 2em;
+    width: 45%;
+    margin-top:1em;
+    &:focus{
+      outline:0;
+    }
+  }
+  .btn-primary{
+    background-color: $mainColour;
+    padding: 1em;
+    color: white;
+    padding: 1em 2em;
+    width: 45%;
+    margin-top:1em;
+    &:focus{
+      outline:0;
+    }
+  }
+  .input-group-addon {
+    background: none;
+    border: none;
+    color: $mainColour;
+  }
+  .input-group{
+    margin-top:1em;
+    margin-bottom:5em;
+    &:last-child{
+     margin-bottom:0; 
+     margin-top: -0.5em;
+    }
+  }
+  .form-control{
+    outline: none;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    
+    border-radius:0;
+    border-bottom:2px solid $mainColour;
+  }
+}
+.filter{
+  background: #313131;
+  height: 4.5em;
+  color: white;
+  padding-top: 1.2em;
+  margin-bottom: 0;
+  position:fixed;
+  top: 0em;
+  left: 0em;
+  width: 100%;
+  z-index: 9;
+  .form-control{
+    outline: none;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0px;
+    background: #3c3c3c;
+    color: #afafaf;
+    padding: 0;
+    /* text-align: center; */
+    width: 100%;
+    display: block;
+    /* padding-bottom: 0.7em; */
+    font-size: 0.8em;
+    padding: 0 1em;
+  }
+  a{
+    color:white;
+    font-size:1.5em;
+  }
 }

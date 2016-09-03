@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   day: true,
   startTime: 0,
   endTime: 0,
-
+  presetSelected: null,
   months: [{
     label: 'January',
     value: 0
@@ -162,7 +162,10 @@ export default Ember.Controller.extend({
 
   nextAddShift: function() {
     this.set('sectionOne', false);
+    this.set('application.showBack', false);
     this.set('application.action.nextAddShift', false);
+    this.set('startTime', moment(new Date()).format('hh:mm'));
+    this.set('endTime', moment(new Date()).format('hh:mm'));
   },
   datesListener: function() {
     if (this.get('dates.length') > 0) {
@@ -172,6 +175,17 @@ export default Ember.Controller.extend({
     }
   }.observes('dates.length'),
   actions: {
+    dontUse: function(){
+      this.set('presetSelected', null);
+    },
+    back: function(){
+      this.set('sectionOne', true);
+      this.set('application.action.nextAddShift', true);
+      this.set('application.showBack', true);
+    },
+    selectPreset: function(preset){
+      this.set('presetSelected', preset);
+    },
     selectMonth: function(month) {
       this.get('month', month);
       this.calculateShifts(month, this.get('year'));
@@ -195,32 +209,47 @@ export default Ember.Controller.extend({
     },
     saveShifts: function() {
       var user = this.get('application.user');
+      let controller = this;
+      
       if (user.get('id')) {
 
-        if (this.get('reference') && this.get('startTime') && this.get('endTime')) {
+        if (this.get('reference') && this.get('startTime') && this.get('endTime') || this.get('presetSelected')) {
           var dates = this.get('dates');
 
           //date format: Thu Aug 04 2016 00:00:00 GMT+0100 (BST)
 
-          let controller = this;
-          this.set('application.loading', true);
+          this.set('application.loading', true);          
           async.eachSeries(dates, function iterator(date, callback) {
             date = date.get('fullDate');
             let formattedDate = moment(date, 'DD/MM/YY');
 
             var timeStamp = moment(formattedDate).unix();
 
-            var shift = controller.store.createRecord('shift', {
-              inputDate: Date.now(),
-              reference: controller.get('reference'),
-              day: controller.get('day'),
-              dateTimeStamp: timeStamp,
-              dateText: formattedDate,
-              startTime: controller.get('startTime'),
-              endTime: controller.get('endTime'),
-              user: user
-            });
-
+            if(controller.get('presetSelected') === null){
+              var shift = controller.store.createRecord('shift', {
+                inputDate: Date.now(),
+                reference: controller.get('reference'),
+                day: controller.get('day'),
+                dateTimeStamp: timeStamp,
+                dateText: formattedDate,
+                startTime: controller.get('startTime'),
+                endTime: controller.get('endTime'),
+                user: user
+              });
+            }else{
+              var shift = controller.store.createRecord('shift', {
+                inputDate: Date.now(),
+                reference: controller.get('presetSelected.reference'),
+                day: controller.get('presetSelected.day'),
+                dateTimeStamp: timeStamp,
+                dateText: formattedDate,
+                startTime: controller.get('presetSelected.startTime'),
+                endTime: controller.get('presetSelected.endTime'),
+                user: user
+              });
+            
+            }
+            
             shift.save().then(function(shift) {
               user.get('shifts').pushObject(shift);
               user.save().then(function() {
@@ -228,8 +257,22 @@ export default Ember.Controller.extend({
               });
             });
           }, function done() {
-            controller.set('application.loading', false);
-            controller.transitionToRoute('overview');
+            var newPreset = controller.store.createRecord('preset', {
+              reference: controller.get('reference'),
+              startTime: controller.get('startTime'),
+              endTime: controller.get('endTime'),
+              isDay: controller.get('day'),
+              user: controller.get('application.user')
+            });
+      
+            newPreset.save().then(function(){
+              user.get('presets').pushObject(newPreset);
+              user.save().then(function(){
+                controller.set('application.loading', false);
+                controller.set('presetSelected', null);
+                controller.transitionToRoute('overview');
+              });
+            });
           });
         } else {
           this.set('application.message', 'Please fill in all fields')

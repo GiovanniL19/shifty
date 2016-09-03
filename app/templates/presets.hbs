@@ -1,23 +1,26 @@
 <div class="presets">
-  {{#if newPreset}}
-    <p>Presets allow you to quickly set the reference, start and end date wheh adding shifts. For example you could create a preset titled "Long Day".</p>
-    {{input type="text" class="form-control" placeholder="Title"}}
-    {{input type="text" class="form-control" placeholder="Shift Reference"}}
+  {{#liquid-if newPreset class="slide"}}
+    {{input type="text" class="form-control" placeholder="Title" value=currentPreset.title}}
+    {{input type="text" class="form-control" placeholder="Shift Reference" value=currentPreset.reference}}
     <div class="col-xs-6">
-      {{input type="time" class="form-control" placeholder="Start Time"}}
+      {{input type="time" class="form-control" placeholder="Start Time" value=currentPreset.startTime}}
     </div>
     <div class="col-xs-6">
-      {{input type="time" class="form-control" placeholder="End Time"}}
+      {{input type="time" class="form-control" placeholder="End Time" value=currentPreset.endTime}}
     </div>
     <div class="text-center center">
-      <button class="btn btn-default">Add</button>
+      <button class="btn btn-primary" {{action "savePreset"}}>Add</button>
+       <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
     </div>
-  {{else}}
-    {{#each model as |preset|}}
-      
+  {{/liquid-if}}
+  <p>Presets allow you to quickly set the reference, start and end date wheh adding shifts. For example you could create a preset titled "Long Day".</p>
+  <ul>
+    {{#each application.user.presets as |preset|}}
+      <li class="bubble text-center" {{action "selectPreset" preset}}>
+        {{preset.title}}
+      </li>
     {{else}}
-      <h5>You have no presets</h5>
+      <li><h5>You have no presets</h5></li>
     {{/each}}
-    
-  {{/if}}
+  </ul>
 </div>

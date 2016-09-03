@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   sideMenu: Ember.inject.service(),
   addShift: Ember.inject.controller(),
   settings: Ember.inject.controller(),
-  
+  presets: Ember.inject.controller(),
   isOffline: false,
   user: null,
   userID: '',
@@ -252,7 +252,9 @@ export default Ember.Controller.extend({
   },
   actions: {
     toggleAddPresets: function(){
-      this.set('settings.newPreset', !this.get('settings.newPreset'));
+      this.set('presets.newPreset', !this.get('presets.newPreset'));
+      window.scrollTo(0,0);
+      this.set('presets.currentPreset', null);
     },
     toggleView: function(){
       this.set('cardView', !this.get('cardView'));

@@ -1,5 +1,5 @@
 <div class="add-shift">
-  {{#liquid-if sectionOne class="nextPage"}}
+  {{#liquid-if sectionOne class="slide"}}
     <div class="filter">
       <div class="col-xs-6">
         <select class="form-control" onchange={{action "selectMonth" value="target.value"}}>
@@ -39,49 +39,73 @@
       <ul class="days"> 
         {{#each calendar as |item|}}
           {{#if item.isSelected}}
-            <li class=" {{if item.isToday 'today'}}" {{action "selectDate" item}}><span class="active">{{item.dayFormatted}}</span></li>
+            <li {{action "selectDate" item}}><span class="active {{if item.isToday 'today'}}">{{item.dayFormatted}}</span></li>
           {{else}}
             {{#if item.isPreSelected}}
               <li><span class="preSelected {{if item.isToday 'today'}}">{{item.dayFormatted}}</span></li>
             {{else}}
-              <li {{action "selectDate" item}} class="{{if item.isToday 'today'}}">{{item.dayFormatted}}</li>
+              <li {{action "selectDate" item}}> <span class="{{if item.isToday 'today'}}">{{item.dayFormatted}}</span></li>
             {{/if}}
           {{/if}}
         {{/each}}
       </ul>
     </div>
+    <div class="tip text-center">
+      <small class="text-center">Select your shifts in groups. For example <i>all your shifts that were days starting from 07:00 till 19:00</i></small>
+    </div>
   {{else}}
-    <div class="col-xs-12 text-center options">
+    <div class="text-center options">
       <h4>Step 2.</h4>
       <p>Great! We have the dates, now were they day or night shifts?</p>
-      
-      {{#if day}}
-        <button class="btn btn-primary" {{action 'select'}}>Day</button> 
-        <button class="btn btn-default" {{action 'select'}}>Night</button>
-      {{else}}
-        <button class="btn btn-default" {{action 'select'}}>Day</button> 
-        <button class="btn btn-primary" {{action 'select'}}>Night</button>
+      {{#if application.user.presets}}
+        <small>Suggestions</small>
+        <div class="suggestions">
+          {{#each application.user.presets as |preset|}}
+            <a class="suggestion" {{action "selectPreset" preset}}>{{preset.title}}</a> 
+          {{/each}}
+        </div>
+        <hr>
       {{/if}}
+      {{#liquid-if presetSelected class="slide"}}
+        <h4>Using Suggestion.</h4>
+        {{#if presetSelected.isDay}}
+          <h5><strong>Day Shift</strong></h5>
+        {{else}}
+          <h5><strong>Night Shift</strong></h5>
+        {{/if}}
+        <h5>Reference: <strong>{{presetSelected.reference}}</strong></h5>
+        <h5>Start Time: <strong>{{presetSelected.startTime}}</strong></h5>
+        <h5>End Time: <strong>{{presetSelected.endTime}}</strong></h5>
+        <a {{action 'dontUse'}}>Dont Use Suggestion</a>
+      {{else}}
+        {{#if day}}
+          <button class="btn btn-primary" {{action 'select'}}>Day</button> 
+          <button class="btn btn-default" {{action 'select'}}>Night</button>
+        {{else}}
+          <button class="btn btn-default" {{action 'select'}}>Day</button> 
+          <button class="btn btn-primary" {{action 'select'}}>Night</button>
+        {{/if}}
       
-      <br>
-      <hr>
-      <br>
-      <p>Add a reference</p>
-      <br>
-      {{input type="text" class="form-control" placeholder="e.g NHS" value=reference}}
-      <br><br>
-      <span class="col-xs-6">
-        <p>Start Time</p>
-        {{input type="time" class="form-control" value=startTime}}
-      </span>
-      <span class="col-xs-6">
-        <p>End Time</p>
-        {{input type="time" class="form-control" value=endTime}}
-      </span>
-      <br><br>
-      <div class="col-xs-12">
         <br><br>
-        <button class="btn btn-default" {{action 'saveShifts'}}>Save</button> 
+        <p>Add a reference</p>
+        {{input type="text" class="form-control" placeholder="e.g Long" value=reference}}
+        <br><br>
+        <span class="col-xs-6">
+          <p>Start Time</p>
+          {{input type="time" class="form-control" value=startTime}}
+        </span>
+        <span class="col-xs-6">
+          <p>End Time</p>
+          {{input type="time" class="form-control" value=endTime}}
+        </span>
+        <br><br>
+      {{/liquid-if}}
+      <div class="">
+        <br><br>
+        <button class="btn btn-default" {{action 'back'}}>Back</button> <button class="btn btn-primary" {{action 'saveShifts'}}>Save</button> 
+      </div>
+      <div class="tip text-center">
+        <small class="text-center">Suggestions will appear after you start adding shifts to make your life easier when adding shifts!</small>
       </div>
     </div>
   {{/liquid-if}}

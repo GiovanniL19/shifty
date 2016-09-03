@@ -5,11 +5,6 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   newPassword: '',
   profilePicture: null,
-  tab: {
-    account: true,
-    presets: false,
-  },
-  newPreset: false,
   tempPassSet: function(){
     if(this.get('application.user.secure.tempPass') === "true"){
       return true;
@@ -56,22 +51,5 @@ export default Ember.Controller.extend({
       console.log('No image selected');
     }
 
-  }.observes('profilePicture'),
-  actions: {
-    tabChange: function(option){
-      this.set('tab', {
-        account: false,
-        presets: false
-      });
-      
-      if(option === "account"){
-        this.set('application.action.saveSettings', true);
-        this.set('application.action.addPreset', false);
-      }else{
-        this.set('application.action.saveSettings', false);
-        this.set('application.action.addPreset', true);
-      }
-      this.set('tab.' + option, true);
-    }
-  }
+  }.observes('profilePicture')
 });

@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
   imageGenerator: function(){
     let controller = this;
     
-    let url;
+    let url = '';
     if(this.get('nextWeekShifts.length') >= 1){
       url = 'http://api.pexels.com/v1/search?query=work&per_page=20&page=1';
     }else{

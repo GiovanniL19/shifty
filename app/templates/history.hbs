@@ -1,5 +1,5 @@
-<div class="history">
-  {{#if application.cardView}}
+<div class="history" style="{{if application.cardView 'padding:1em'}}">
+  {{#liquid-if application.cardView class="slide"}}
     {{#if model}}
       <p class="text-center"><h5>You've been busy!</h5></p>
     {{/if}}
@@ -38,7 +38,8 @@
     </div>
   {{else}}
     {{partial "filter"}}
-    {{partial 'calendar-view'}}
-    <p class="text-center">The blue squares represent your shifts</p>
-  {{/if}}
+    <div style="margin-top: 5.5em;">
+      {{partial 'calendar-view'}}
+    </div>
+  {{/liquid-if}}
 </div>
