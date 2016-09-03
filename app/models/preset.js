@@ -9,5 +9,6 @@ export default DS.Model.extend({
   startTime: DS.attr('string'),
   endTime: DS.attr('string'),
   user: DS.belongsTo('user', {async: true}),
-  isDay: DS.attr('boolean')
+  isDay: DS.attr('boolean'),
+  colour: DS.attr('string')
 });

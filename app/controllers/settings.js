@@ -38,8 +38,8 @@ export default Ember.Controller.extend({
     var controller = this;
   
     try {
-      if(this.get('imageSize') > 1000000){
-        alert('Image size to large, please do not exceed 1MB');
+      if(this.get('imageSize') > 3000000){
+        alert('Image size to large, please do not exceed 3MB');
       }else{
         if(this.get('imageType') === 'image/jpeg' || this.get('imageType') === 'image/jpg' || this.get('imageType') === 'image/png'){
           controller.set('application.user.identity.image', this.get('profilePicture'));
@@ -51,5 +51,10 @@ export default Ember.Controller.extend({
       console.log('No image selected');
     }
 
-  }.observes('profilePicture')
+  }.observes('profilePicture'),
+  actions: {
+    changeViewSetting: function(option){
+      this.set('application.user.calendarView', option);
+    }
+  }
 });

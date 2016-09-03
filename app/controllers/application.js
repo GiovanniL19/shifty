@@ -153,7 +153,8 @@ export default Ember.Controller.extend({
       var object = Ember.Object.create({
           day: moment(day).format('DD/MM/YYYY'), 
           dayFormatted: moment(day).format('DD'), 
-          isActive: false
+          isActive: false,
+          colour: 'rgb(0, 99, 153)'
        });
       controller.get('calendar').push(object);
     });
@@ -167,6 +168,7 @@ export default Ember.Controller.extend({
       async.eachSeries(controller.get('calendar'), function(date, nextDay){
         if (date.get('day') === moment.unix(timeStamp).format('DD/MM/YYYY')) {
           date.set('isActive', true);
+          date.set('colour', shift.get('colour'));
         }
         nextDay();
       }), function done(){
@@ -298,12 +300,16 @@ export default Ember.Controller.extend({
       this.store.find('user', this.get('userID')).then(function(user){
         controller.set('loading', false);
         controller.set('user', user);
+        controller.set('cardView', !user.get('calendarView'));
         if(user.get('secure.tempPass') === 'true'){
           controller.transitionToRoute('settings');
         }
       });
     }
   },
+  defaultViewChange: function(){
+    this.set('cardView', !this.get('user.calendarView'));
+  }.observes('user.calendarView'),
   actions: {
     toggleView: function(){
       this.set('cardView', !this.get('cardView'));

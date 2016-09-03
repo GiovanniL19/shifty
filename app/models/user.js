@@ -9,5 +9,6 @@ export default DS.Model.extend({
   secure: MF.fragment('user-secure'),
   shifts: DS.hasMany('shift', {async: true, defaultValue: []}),
   presets: DS.hasMany('preset', {async: true, defaultValue: []}),
-  newUser: DS.attr('string', {defaultValue: true})
+  newUser: DS.attr('string', {defaultValue: true}),
+  calendarView: DS.attr('boolean')
 });

@@ -10,6 +10,8 @@ export default Ember.Controller.extend({
   startTime: 0,
   endTime: 0,
   presetSelected: null,
+  paletteOfColours: ['rgb(0, 99, 153)', 'rgb(197, 33, 33)', 'rgb(33, 197, 121)', 'rgb(197, 101, 33)', 'rgb(111, 33, 197)', 'rgb(219, 51, 222)'],
+  presetColour: 'rgba(0, 99, 153, 0.86)',
   months: [{
     label: 'January',
     value: 0
@@ -241,7 +243,8 @@ export default Ember.Controller.extend({
                 dateText: formattedDate,
                 startTime: controller.get('startTime'),
                 endTime: controller.get('endTime'),
-                user: user
+                user: user,
+                colour: controller.get('presetColour')
               });
             }else{
               var shift = controller.store.createRecord('shift', {
@@ -252,7 +255,8 @@ export default Ember.Controller.extend({
                 dateText: formattedDate,
                 startTime: controller.get('presetSelected.startTime'),
                 endTime: controller.get('presetSelected.endTime'),
-                user: user
+                user: user,
+                colour: controller.get('presetSelected.colour')
               });
             
             }
@@ -270,17 +274,16 @@ export default Ember.Controller.extend({
                 startTime: controller.get('startTime'),
                 endTime: controller.get('endTime'),
                 isDay: controller.get('day'),
-                user: controller.get('application.user')
+                user: controller.get('application.user'),
+                colour: controller.get('presetColour')
               });
-            }
-      
-            newPreset.save().then(function(){
+              newPreset.save();
               user.get('presets').pushObject(newPreset);
-              user.save().then(function(){
-                controller.set('application.loading', false);
-                controller.set('presetSelected', null);
-                controller.transitionToRoute('overview');
-              });
+            }
+            user.save().then(function(){
+              controller.set('application.loading', false);
+              controller.set('presetSelected', null);
+              controller.transitionToRoute('overview');
             });
           });
         } else {

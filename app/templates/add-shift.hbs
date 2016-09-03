@@ -61,7 +61,7 @@
         <small>Suggestions</small>
         <div class="suggestions">
           {{#each presets as |preset|}}
-            <a class="suggestion" {{action "selectPreset" preset}}>{{preset.title}}</a> 
+            <a class="suggestion" {{action "selectPreset" preset}} style="color:{{preset.colour}}">{{preset.title}}</a> 
           {{/each}}
         </div>
         <hr>
@@ -87,9 +87,16 @@
         {{/if}}
       
         <br><br>
-        <p>Add a reference</p>
-        {{input type="text" class="form-control" placeholder="e.g Long" value=reference}}
-        <br><br>
+        <div class="col-xs-8">
+          <p>Add a reference</p>
+          {{input type="text" class="form-control" placeholder="e.g Long" value=reference}}
+          <br><br>
+        </div>
+        <div class="col-xs-4">
+          <p>Colour</p>
+          {{spectrum-color-picker color=presetColour showPalette=true showPaletteOnly=true palette=paletteOfColours hideAfterPaletteSelect=true}}
+          <br><br>
+        </div>
         <span class="col-xs-6">
           <p>Start Time</p>
           {{input type="time" class="form-control" value=startTime}}

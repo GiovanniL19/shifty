@@ -10,7 +10,7 @@
       {{#unless item.isActive}}
         <li>{{item.dayFormatted}}</li>
       {{else}}
-        <li><span class="active">{{item.dayFormatted}}</span></li>
+        <li><span class="active" style="background: {{item.colour}}">{{item.dayFormatted}}</span></li>
       {{/unless}}
     {{/each}}
   </ul>

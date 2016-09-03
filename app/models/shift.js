@@ -10,6 +10,7 @@ export default DS.Model.extend({
   startTime: DS.attr('string'),
   endTime: DS.attr('string'),
   user: DS.belongsTo('user', {async: true}),
+  colour: DS.attr('string'),
   dateFormatted: function(){
     return moment.unix(this.get('dateTimeStamp')).format('MMMM Do YYYY');
   }.property('dateTimeStamp'),

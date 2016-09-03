@@ -26,6 +26,16 @@
       <small>User Name</small>
       {{input type="text" class="form-control" placeholder="Username" readonly=true value=application.user.secure.username}}
       <br><br>
+      <small>Change Default View</small>
+      <br>
+      {{#if application.user.calendarView}}
+        <button class="btn btn-primary">Calendar</button>
+        <button class="btn btn-default" {{action 'changeViewSetting' false}}>List</button>
+      {{else}}
+        <button class="btn btn-default" {{action 'changeViewSetting' true}}>Calendar</button> 
+          <button class="btn btn-primary">List</button>
+      {{/if}}
+      <br><br>
       {{#unless tempPassSet}}
         <small>Password</small>
         {{input type="password" class="form-control" value=newPassword placeholder="Password"}}

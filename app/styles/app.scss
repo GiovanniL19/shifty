@@ -26,6 +26,53 @@ $green: #4CAF50;
 $lightMainColour: #026da7;
 //$mainColour: #43A047;
 
+.sp-replacer {
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 4px;
+  display: inline-block;
+  background: white;
+  vertical-align: middle;
+  border: none;
+  color: rgba(255, 255, 255, 0);
+  width: 3em;
+  .sp-preview {
+    position: relative;
+    width: 25px;
+    height: 20px;
+    border:none;
+    margin-right: 5px;
+    float: left;
+    z-index: 0;
+    width: 3em;
+    height: 2em;
+  }
+  .sp-dd{
+    color:transparent !important;
+  }
+}
+.sp-container {
+  border-radius: 0;
+  left: 0 !important;
+  bottom: -16em !important;
+  width: 58% !important;
+  border: 2px solid #a0a0a0;
+  height: 13em;
+  margin-left: 25.5%;
+  background: white;
+}
+.sp-palette {
+  max-width: 220px none;
+  width: 100%;
+}
+.sp-palette .sp-thumb-el {
+  width: 16px;
+  height: 16px;
+  border: none;
+  padding: 1em;
+  margin: 1em;
+}
 @mixin cards(){
   .lg-card{
     padding: 1em;
@@ -289,6 +336,8 @@ body{
     .name.pull-left {
       padding: 1em;
       font-size: 1.1em;
+      width: 10.6em;
+      margin-top:-0.5em;
     }
   }
   li{

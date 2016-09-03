@@ -52,6 +52,7 @@
     "ember-side-menu": "0.0.9",
     "ember-simple-auth": "1.1.0",
     "ember-simple-auth-token": "1.1.1",
+    "ember-spectrum-color-picker": "0.5.1",
     "liquid-fire": "0.21.3",
     "loader.js": "^4.0.0"
   },

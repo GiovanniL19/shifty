@@ -17,6 +17,7 @@
     "interact": "1.2.5",
     "jquery-simulate": "1.0.1",
     "lodash": "3.10.0",
-    "fontawesome": "~4.5.0"
+    "fontawesome": "~4.5.0",
+    "spectrum": "^1.8.0"
   }
 }
