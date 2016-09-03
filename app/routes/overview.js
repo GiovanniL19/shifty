@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   activate: function() {
+    let controller = this.controllerFor('overview');
     this._super();
     window.scrollTo(0,0);
   },

@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
       if(logout){
         controller.get('session').invalidate();
         controller.get("application.sideMenu").close();
-        controller.transitionToRoute('login');
+        location.reload();
       }
     });
   },

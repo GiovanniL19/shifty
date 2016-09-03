@@ -13,6 +13,18 @@ export default Ember.Route.extend({
     
     this._super();
     window.scrollTo(0,0);
+    
+    if(!controller.get('application.cardView')){
+      try{
+        if (cordova.platformId == 'android') {
+          StatusBar.backgroundColorByHexString("#313131");
+        }
+      }catch(err){
+        console.log(err);
+      } 
+      controller.set('application.backColour', '#313131');
+    }
+    
   },
   setupController: function(controller) {
     if(controller.get('session.isAuthenticated')){

@@ -60,7 +60,7 @@
       {{#if application.user.presets}}
         <small>Suggestions</small>
         <div class="suggestions">
-          {{#each application.user.presets as |preset|}}
+          {{#each presets as |preset|}}
             <a class="suggestion" {{action "selectPreset" preset}}>{{preset.title}}</a> 
           {{/each}}
         </div>
@@ -100,10 +100,8 @@
         </span>
         <br><br>
       {{/liquid-if}}
-      <div class="">
-        <br><br>
+        <br>
         <button class="btn btn-default" {{action 'back'}}>Back</button> <button class="btn btn-primary" {{action 'saveShifts'}}>Save</button> 
-      </div>
       <div class="tip text-center">
         <small class="text-center">Suggestions will appear after you start adding shifts to make your life easier when adding shifts!</small>
       </div>

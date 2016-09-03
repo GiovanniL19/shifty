@@ -11,14 +11,13 @@ export default Ember.Controller.extend({
   
   imageGenerator: function(){
     let controller = this;
-    
     let url = '';
     if(this.get('nextWeekShifts.length') >= 1){
-      url = 'http://api.pexels.com/v1/search?query=work&per_page=20&page=1';
+      url = 'http://api.pexels.com/v1/search?query=working&per_page=20&page=1';
     }else{
       url = 'http://api.pexels.com/v1/search?query=summer&per_page=20&page=1';
     }
-  
+
     controller.set('application.loading', true);
 		$.ajax({
 			url: url,
@@ -34,7 +33,7 @@ export default Ember.Controller.extend({
 				console.log(err);
 			}
 		});
-  }.observes('nextWeekShifts.length'),
+  },
 
   getWeekData: function(){
     let controller = this;
@@ -43,9 +42,7 @@ export default Ember.Controller.extend({
       controller.set('lastWeekShifts', shifts);
       controller.store.query('shift', {when: 'next', user: controller.get('application.user.id')}).then(function(shifts){
         controller.set('nextWeekShifts', shifts);
-        setTimeout(function(){
-          controller.set('application.loading', false);
-        },1000);
+        controller.imageGenerator();
       });
     });
   }.observes('application.user.id'),
@@ -70,7 +67,7 @@ export default Ember.Controller.extend({
               controller.set('application.message', 'Shift Removed');
             });
           });
-        },1000);
+        },400);
       }
     }
   }

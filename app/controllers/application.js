@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
   sideMenu: Ember.inject.service(),
   addShift: Ember.inject.controller(),
   settings: Ember.inject.controller(),
-  presets: Ember.inject.controller(),
   isOffline: false,
   user: null,
   userID: '',
@@ -19,6 +18,7 @@ export default Ember.Controller.extend({
     calendarView: false,
     addPreset: false
   },
+  barColour: 'rgba(0, 99, 153, 0.86)',
   loading: false,
   percentageDaysThisMonth: 0,
   percentageNightsThisMonth: 0,
@@ -43,6 +43,60 @@ export default Ember.Controller.extend({
   years: [],
   year: 0,
   month: 0,
+  change: function(){
+    let controller = this;
+    if(this.get('currentPath') === 'add-shift'){
+      if(controller.get('addShift.sectionOne')){
+        try{
+          if (cordova.platformId == 'android') {
+            StatusBar.backgroundColorByHexString("#313131");
+          }
+        }catch(err){
+          console.log(err);
+        } 
+        controller.set('backColour', '#313131');
+      }else{
+        try{
+          if (cordova.platformId == 'android') {
+            StatusBar.backgroundColorByHexString("#015989");
+          }
+        }catch(err){
+          console.log(err);
+        } 
+        controller.set('backColour', 'rgba(0, 99, 153, 0.86)');
+      }
+    }else if(this.get('currentPath') === 'history' || this.get('currentPath') === 'upcoming'){
+      if(!controller.get('cardView')){
+        try{
+          if (cordova.platformId == 'android') {
+            StatusBar.backgroundColorByHexString("#313131");
+          }
+        }catch(err){
+          console.log(err);
+        } 
+        controller.set('backColour', '#313131');
+      }else{
+        try{
+          if (cordova.platformId == 'android') {
+            StatusBar.backgroundColorByHexString("#015989");
+          }
+        }catch(err){
+          console.log(err);
+        } 
+        controller.set('backColour', 'rgba(0, 99, 153, 0.86)');
+      }
+    }else{
+      try{
+        if (cordova.platformId == 'android') {
+          StatusBar.backgroundColorByHexString("#015989");
+        }
+      }catch(err){
+        console.log(err);
+      } 
+      controller.set('backColour', 'rgba(0, 99, 153, 0.86)');
+    }
+    
+  }.observes('currentPath', 'cardView', 'addShift.sectionOne'),
   getPastAndNextYears: function(){
     var years = [];
     for(var i = 4; i >= 0; i--){
@@ -251,11 +305,6 @@ export default Ember.Controller.extend({
     }
   },
   actions: {
-    toggleAddPresets: function(){
-      this.set('presets.newPreset', !this.get('presets.newPreset'));
-      window.scrollTo(0,0);
-      this.set('presets.currentPreset', null);
-    },
     toggleView: function(){
       this.set('cardView', !this.get('cardView'));
     },

@@ -53,7 +53,13 @@ export default Ember.Controller.extend({
   calendarDays: [],
   //set all dates in system in dates valu
   //on save ignore dates that already exist in database
-
+  presets: [],
+  getPresets: function(){
+    let controller = this;
+    this.get('application.user.presets').then(function(presets){
+      controller.set('presets', presets.toArray().reverse());
+    });
+  },
   getPastAndNextYears: function() {
     var years = [];
     for (var i = 4; i >= 0; i--) {
@@ -161,6 +167,7 @@ export default Ember.Controller.extend({
   },
 
   nextAddShift: function() {
+    this.getPresets();
     this.set('sectionOne', false);
     this.set('application.showBack', false);
     this.set('application.action.nextAddShift', false);
@@ -257,13 +264,15 @@ export default Ember.Controller.extend({
               });
             });
           }, function done() {
-            var newPreset = controller.store.createRecord('preset', {
-              reference: controller.get('reference'),
-              startTime: controller.get('startTime'),
-              endTime: controller.get('endTime'),
-              isDay: controller.get('day'),
-              user: controller.get('application.user')
-            });
+            if(controller.get('presetSelected') === null){
+              var newPreset = controller.store.createRecord('preset', {
+                reference: controller.get('reference'),
+                startTime: controller.get('startTime'),
+                endTime: controller.get('endTime'),
+                isDay: controller.get('day'),
+                user: controller.get('application.user')
+              });
+            }
       
             newPreset.save().then(function(){
               user.get('presets').pushObject(newPreset);
