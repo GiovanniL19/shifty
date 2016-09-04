@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  rev: DS.attr('string'),
   type: DS.attr('string', {defaultValue: 'preset'}),
   title: function(){
     return this.get('reference') + " - " + this.get('startTime') + " to " + this.get('endTime') ;

@@ -277,14 +277,21 @@ export default Ember.Controller.extend({
                 user: controller.get('application.user'),
                 colour: controller.get('presetColour')
               });
-              newPreset.save();
-              user.get('presets').pushObject(newPreset);
+              newPreset.save().then(function(newPreset){
+                user.get('presets').pushObject(newPreset);
+                user.save().then(function(){
+                  controller.set('application.loading', false);
+                  controller.set('presetSelected', null);
+                  controller.transitionToRoute('overview');
+                });
+              });
+            }else{
+              user.save().then(function(){
+                controller.set('application.loading', false);
+                controller.set('presetSelected', null);
+                controller.transitionToRoute('overview');
+              });
             }
-            user.save().then(function(){
-              controller.set('application.loading', false);
-              controller.set('presetSelected', null);
-              controller.transitionToRoute('overview');
-            });
           });
         } else {
           this.set('application.message', 'Please fill in all fields')

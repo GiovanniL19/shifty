@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
     }
   }.property('application.user'),
   save: function(){
+    this.set('application.loading', true);
     var user = this.get('application.user');
     
     let controller  = this;
@@ -26,6 +27,7 @@ export default Ember.Controller.extend({
     }
     
     user.save().then(function(){
+      controller.set('application.loading', false);
       controller.set('application.message', 'Update Successful');
       if(logout){
         controller.get('session').invalidate();
