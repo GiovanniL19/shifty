@@ -220,15 +220,15 @@ export default Ember.Controller.extend({
       var user = this.get('application.user');
       let controller = this;
       
-      if (user.get('id')) {
+      if(user.get('id')) {
 
         if (this.get('reference') && this.get('startTime') && this.get('endTime') || this.get('presetSelected')) {
           var dates = this.get('dates');
-
+          this.set('application.savingShifts', true);
           //date format: Thu Aug 04 2016 00:00:00 GMT+0100 (BST)
 
           this.set('application.loading', true);          
-          async.eachSeries(dates, function iterator(date, callback) {
+          async.forEachOf(dates, function iterator(date, index, callback) {
             date = date.get('fullDate');
             let formattedDate = moment(date, 'DD/MM/YY');
 
@@ -263,11 +263,17 @@ export default Ember.Controller.extend({
             
             shift.save().then(function(shift) {
               user.get('shifts').pushObject(shift);
-              user.save().then(function() {
-                callback();
-              });
+              callback();
             });
-          }, function done() {
+          }, function(err) {
+            if(err){
+              console.log(err);
+              controller.set('application.message', 'There was an error, please try again');
+              controller.set('application.savingShifts', false);
+              controller.set('application.loading', false);
+              controller.set('presetSelected', null);
+              controller.transitionToRoute('overview');
+            }
             if(controller.get('presetSelected') === null){
               var newPreset = controller.store.createRecord('preset', {
                 reference: controller.get('reference'),
@@ -280,6 +286,7 @@ export default Ember.Controller.extend({
               newPreset.save().then(function(newPreset){
                 user.get('presets').pushObject(newPreset);
                 user.save().then(function(){
+                  controller.set('application.savingShifts', false);
                   controller.set('application.loading', false);
                   controller.set('presetSelected', null);
                   controller.transitionToRoute('overview');
@@ -287,6 +294,7 @@ export default Ember.Controller.extend({
               });
             }else{
               user.save().then(function(){
+                controller.set('application.savingShifts', false);
                 controller.set('application.loading', false);
                 controller.set('presetSelected', null);
                 controller.transitionToRoute('overview');

@@ -1,7 +1,6 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  rev: DS.attr('string'),
   type: DS.attr('string', {defaultValue: 'shift'}),
   inputDate: DS.attr('number'),
   reference: DS.attr('string'),

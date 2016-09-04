@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
   loading: false,
   percentageDaysThisMonth: 0,
   percentageNightsThisMonth: 0,
-  
+  savingShifts: false,
   cardView: true,
 
   months: [
@@ -183,42 +183,44 @@ export default Ember.Controller.extend({
     let controller = this;
     var userID = this.get('user.id');
     var totalDaysWorked = [];
-    
-    this.store.query('shift', {userID: userID, month: parseInt(moment(new Date()).format('M')), year: moment(new Date()).format('YYYY')}).then(function(shifts){      
-      shifts.forEach(function(shift){
-        if(shift.get('day')){
-          if(totalDaysWorked.indexOf(shift.get('dateText')) === -1){
-            totalDaysWorked.push(shift.get('dateText'));
+   
+    if(this.get('savingShifts') === false){
+      this.store.query('shift', {userID: userID, month: parseInt(moment(new Date()).format('M')), year: moment(new Date()).format('YYYY')}).then(function(shifts){      
+        shifts.forEach(function(shift){
+          if(shift.get('day')){
+            if(totalDaysWorked.indexOf(shift.get('dateText')) === -1){
+              totalDaysWorked.push(shift.get('dateText'));
+            }
           }
-        }
-      });
+        });
       
-      var days = controller.getDaysInMonth(parseInt(moment(new Date()).format('M')), moment(new Date()).format('YYYY'));
+        var days = controller.getDaysInMonth(parseInt(moment(new Date()).format('M')), moment(new Date()).format('YYYY'));
       
-      var daysWorked = totalDaysWorked.length;
-      var totalDays = days.length;
-      var percentage = Math.floor((parseInt(daysWorked) / parseInt(totalDays)) * 100);
+        var daysWorked = totalDaysWorked.length;
+        var totalDays = days.length;
+        var percentage = Math.floor((parseInt(daysWorked) / parseInt(totalDays)) * 100);
 
-      controller.set('percentageDaysThisMonth', percentage);
+        controller.set('percentageDaysThisMonth', percentage);
       
-      totalDaysWorked = [];
+        totalDaysWorked = [];
       
-      shifts.forEach(function(shift){
-        if(!shift.get('day')){
-          if(totalDaysWorked.indexOf(shift.get('dateText')) === -1){
-            totalDaysWorked.push(shift.get('dateText'));
+        shifts.forEach(function(shift){
+          if(!shift.get('day')){
+            if(totalDaysWorked.indexOf(shift.get('dateText')) === -1){
+              totalDaysWorked.push(shift.get('dateText'));
+            }
           }
-        }
-      });
+        });
       
-      var daysWorked = totalDaysWorked.length;
-      var totalDays = days.length;
-      var percentage = Math.floor((parseInt(daysWorked) / parseInt(totalDays)) * 100);
+        var daysWorked = totalDaysWorked.length;
+        var totalDays = days.length;
+        var percentage = Math.floor((parseInt(daysWorked) / parseInt(totalDays)) * 100);
 
-      controller.set('percentageNightsThisMonth', percentage);
+        controller.set('percentageNightsThisMonth', percentage);
       
       
-    });
+      });
+    }
   }.observes('user.shifts.length'),
   
   isLoginPage: function(){
@@ -298,11 +300,17 @@ export default Ember.Controller.extend({
     if(this.get('userID')){
       this.set('loading', true);
       this.store.find('user', this.get('userID')).then(function(user){
-        controller.set('loading', false);
-        controller.set('user', user);
-        controller.set('cardView', !user.get('calendarView'));
-        if(user.get('secure.tempPass') === 'true'){
-          controller.transitionToRoute('settings');
+        if(user.get('id') !== controller.get('userID')){
+          controller.get('session').invalidate();
+          controller.get("sideMenu").close();
+          controller.transitionToRoute('login');
+        }else{
+          controller.set('loading', false);
+          controller.set('user', user);
+          controller.set('cardView', !user.get('calendarView'));
+          if(user.get('secure.tempPass') === 'true'){
+            controller.transitionToRoute('settings');
+          }
         }
       });
     }
