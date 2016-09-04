@@ -1,13 +1,11 @@
-
 <nav class="navbar navbar-default" style="background:{{backColour}}">
   <div class="container-fluid col-xs-12">
-    <div class="col-xs-2 menu">
-      {{#side-menu-toggle}}
-        {{fa-icon "bars"}}
-      {{/side-menu-toggle}}
-    </div>
-    
-    <div class="col-xs-1 back">
+    <div class="col-xs-1 menu">
+        {{#side-menu-toggle}}
+          {{fa-icon "bars"}}
+        {{/side-menu-toggle}}
+      </div>
+    <div class="col-xs-3 back">
       {{#if showBack}}
         <a href="##" onClick="history.go(-1); return false;">
           {{fa-icon 'chevron-left'}}
@@ -15,11 +13,11 @@
       {{/if}}
     </div>
     
-    <div class="col-xs-6 text-center title">
+    <div class="col-xs-4 text-center title">
       {{title}}
     </div>
     
-    <div class="col-xs-3 text-right action">
+    <div class="col-xs-4 text-right action">
       {{#if action.calendarView}}
         <a {{action 'toggleView'}}>
           {{#if cardView}}

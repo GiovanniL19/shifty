@@ -83,20 +83,20 @@ $lightMainColour: #026da7;
     width: 90%;
     position: absolute;
     margin-left: 5%;
-    margin-top: 9em;
+    margin-top: 30%;
   }
   .card{
     padding: 1em;
-    min-height: 7em;
+    min-height: 7.5em;
     margin: 1em 0.5em;
     background: white;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.04);
     .options {
       background: #f3f3f3;
-      height: 7em;
+      height: 7.5em;
       margin-top: -1em;
       margin-left: 1em;
-      width: 3.5em;
+      width: 3em;
       position: absolute;
       right: 0em;
       text-align: center;
@@ -127,8 +127,10 @@ $lightMainColour: #026da7;
     .date{
       padding: 0.1em;
       min-width:4em;
+      margin-top: 0.4em;
       .done{
         color:#4CAF50;
+        margin-top: 0.4em;
       }
       .upcoming{
         color:#FF9800;
@@ -162,6 +164,16 @@ $lightMainColour: #026da7;
       outline:0;
     }
   }  
+}
+.popUpCard{
+  @include cards;
+  .card{
+    margin: 0em;
+    width: 100%;
+    p{
+      padding:0;
+    }
+  }
 }
 .nothing {
   margin-top: 50%;
@@ -300,7 +312,7 @@ body{
       font-family: 'Pacifico', cursive;
       color:white;
       font-size:6em;
-      margin-top: 30%;
+      margin-top: 20%;
       margin-bottom:0.5em;
       line-height: 0.6em;
       small{
@@ -356,7 +368,7 @@ body{
     .name.pull-left {
       padding: 1em;
       font-size: 1.1em;
-      width: 10.6em;
+      width: 64%;
       margin-top:-0.5em;
     }
   }
@@ -391,7 +403,7 @@ body{
   }
   .menu{
     i{
-      margin-left:0.8em;
+      margin-left:1.5em;
     }
   }
   a{
@@ -418,11 +430,8 @@ body{
     a{
       margin-top: 0.7em;
       padding-left: 0;
-      display: block;
     }
     i{
-      margin-left: -2em;
-      position: absolute;
       margin-top: 0.2em;
     }
   }
@@ -430,7 +439,7 @@ body{
     color:white;
     font-size:1.5em;
     width: 3em;
-    margin-left: -1.3em;
+    margin-left: -1.8em;
   }  
 }
 
@@ -697,6 +706,7 @@ body{
     background: #3c3c3c;
     padding:2em 1em;
     margin-top:5.5em;
+    margin:0;
     li {
       display: inline-block;
       width: 13%;
@@ -711,6 +721,7 @@ body{
   .days {
     margin: 0;
     padding:1em;
+    margin-top:-1em;
     li{
       list-style-type: none;
       display: inline-block;
@@ -722,7 +733,7 @@ body{
       padding:1em;
       padding: 2.1em 0;
       .active {
-        padding: 1em;
+        padding: 0.9em;
         background: $mainColour;
         color: white !important;
       }

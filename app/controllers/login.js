@@ -12,8 +12,8 @@ export default Ember.Controller.extend({
   newUser: null,
   newPassword: '',
   cNewPassword: '',
-  ip: 'localhost',
-  //ip: '52.89.48.249',
+  //ip: 'localhost',
+  ip: '52.89.48.249',
   resetPassword: false,
   resetEmail: '',
  /* imageGenerator: function(){

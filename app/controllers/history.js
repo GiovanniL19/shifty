@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
   
   actions: {
     select: function(day){
-      if(day === this.get('shift')){
+      if(day.get('shift') === this.get('shift')){
         this.set('shift', null);
       }else{
         this.set('shift', day.get('shift'));

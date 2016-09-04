@@ -5,6 +5,12 @@
     {{/each}}
   </ul>
 
+  {{#if shift}}
+    <div class="popUpCard">
+      {{partial "card"}}
+    </div>
+  {{/if}}
+  
   <ul class="days"> 
     {{#each calendar as |item|}}
       {{#unless item.isActive}}
