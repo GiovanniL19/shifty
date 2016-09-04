@@ -4,9 +4,7 @@ export default Ember.Controller.extend({
   application: Ember.inject.controller(),
   session: Ember.inject.service('session'),
   calendar: [],
-  calendarDays: [],
-  
-  
+  calendarDays: [],  
 
   calculateDaysOff: function(month, year){
     let controller = this;

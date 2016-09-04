@@ -154,7 +154,8 @@ export default Ember.Controller.extend({
           day: moment(day).format('DD/MM/YYYY'), 
           dayFormatted: moment(day).format('DD'), 
           isActive: false,
-          colour: 'rgb(0, 99, 153)'
+          colour: 'rgb(0, 99, 153)',
+          shift: null
        });
       controller.get('calendar').push(object);
     });
@@ -169,6 +170,7 @@ export default Ember.Controller.extend({
         if (date.get('day') === moment.unix(timeStamp).format('DD/MM/YYYY')) {
           date.set('isActive', true);
           date.set('colour', shift.get('colour'));
+          date.set('shift', shift);
         }
         nextDay();
       }), function done(){

@@ -7,7 +7,16 @@ export default Ember.Controller.extend({
   calendar: [],
   calendarDays: [],
   
-  actions:{
+  shift: null,
+  
+  actions: {
+    select: function(day){
+      if(day === this.get('shift')){
+        this.set('shift', null);
+      }else{
+        this.set('shift', day.get('shift'));
+      }
+    },
     selectMonth: function(month){
       this.get('application.month', month);
       this.get('application').calculateShifts(month, this.get('application.year'), this.get('model'), this);

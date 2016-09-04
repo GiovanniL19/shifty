@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  deactivate: function(){
+    let controller = this.controllerFor('history');
+    controller.set('shift', null);
+  },
   activate: function(){
     let controller = this.controllerFor('history');
     controller.set('application.loading', true);

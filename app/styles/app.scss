@@ -87,10 +87,30 @@ $lightMainColour: #026da7;
   }
   .card{
     padding: 1em;
-    min-height: 6.3em;
+    min-height: 7em;
     margin: 1em 0.5em;
     background: white;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.04);
+    .options {
+      background: #f3f3f3;
+      height: 7em;
+      margin-top: -1em;
+      margin-left: 1em;
+      width: 3.5em;
+      position: absolute;
+      right: 0em;
+      text-align: center;
+      border-left: 2px solid #4e4e4e;
+      &:focus{
+        background: #ccc;
+        outline:0;
+      }
+      a{
+        line-height: 7em;
+        text-align: center;
+        color: #222;
+      }
+    }
     p{
       font-size:0.8em;
     }
@@ -121,9 +141,9 @@ $lightMainColour: #026da7;
       .circle{
         display:block;
         width:2em;
-        height:2em;
+        height:4em;
         text-align:center;
-        line-height:2em;
+        line-height:4em;
         color:white;
       }
     }
@@ -454,6 +474,11 @@ body{
   .cards{
     padding-top:2em;
     @include cards;
+    .card{
+      .options {
+        right:1.5em;
+      }
+    }
   }
 }
 

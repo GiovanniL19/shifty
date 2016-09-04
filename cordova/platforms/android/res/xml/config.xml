@@ -42,4 +42,5 @@
     <preference name="StatusBarBackgroundColor" value="#015989" />
     <preference name="FadeSplashScreen" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="Orientation" value="portrait" />
 </widget>
