@@ -1,5 +1,5 @@
 <div class="card animated fadeIn" {{action "removeShift" shift on="swipe"}} id="{{shift.id}}">
-  <div class="title col-xs-4">
+  <div class="title col-xs-5">
     <strong>{{shift.reference}}</strong><br>
     <small>{{shift.dateFormatted}}</small>
   </div>
@@ -10,7 +10,7 @@
     <span class="dayNight col-xs-2 text-center"><span class="circle" style="background:{{shift.colour}};">{{fa-icon 'moon-o'}}</span></span>
   {{/if}}
 
-  <div class="date col-xs-4 text-right">
+  <div class="date col-xs-3 text-right">
       {{#if shift.isDone}}<small class="done">DONE</small>{{/if}}
      {{#if shift.upcoming}}<small class="upcoming">COMING UP</small>{{/if}}
      <br>
@@ -19,7 +19,7 @@
       End {{shift.endTime}}
     </p>
   </div>
-  <div class="options col-xs-1" {{action 'removeShift' shift}}>
+  <div class="options col-xs-2" {{action 'removeShift' shift}}>
     <a>{{fa-icon "ban"}}</a>
   </div>
 </div>

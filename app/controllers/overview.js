@@ -12,14 +12,11 @@ export default Ember.Controller.extend({
   imageGenerator: function(){
     let controller = this;
     let url = '';
-    controller.set('application.loading', true);
     if(this.get('nextWeekShifts.length') >= 1){
       url = 'http://api.pexels.com/v1/search?query=working&per_page=20&page=1';
     }else{
       url = 'http://api.pexels.com/v1/search?query=summer&per_page=20&page=1';
     }
-
-    controller.set('application.loading', true);
 		$.ajax({
 			url: url,
 			type: 'GET',
@@ -32,6 +29,7 @@ export default Ember.Controller.extend({
 			},
 			error: function(err) {
 				console.log(err);
+        controller.set('application.loading', false);
 			}
 		});
   },
@@ -43,7 +41,6 @@ export default Ember.Controller.extend({
       controller.set('lastWeekShifts', shifts);
       controller.store.query('shift', {when: 'next', user: controller.get('application.user.id')}).then(function(shifts){
         controller.set('nextWeekShifts', shifts);
-        controller.set('application.loading', false);
         controller.imageGenerator();
       });
     });

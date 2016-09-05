@@ -1,18 +1,20 @@
 <div class="overview">
   <div class="cards">
-    <div class="back-top" style="background:url('{{backTop}}') fixed no-repeat; backgrouns-size:cover;">
-      <span class="lg-card text-center">
-        {{#if nextWeekShifts}}
-          <h2 class="text-center welcome animated pulse" style="background:#ff9a07">{{fa-icon "exclamation"}}</h2>
-          <h4 class="text-center toDo">You Have Shifts Next Week</h4>
-        {{else}}
-            <h2 class="text-center welcome animated pulse" style="background:#4CAF50">{{fa-icon "thumbs-up"}}</h2>
-            <h4 class="text-center toDo">No Shifts coming up!</h4>
-        {{/if}}
-        <small class="text-center">Day shifts this month: <strong>{{application.percentageDaysThisMonth}}%</strong></small>
-        <small class="text-center">Night shifts this month: <strong>{{application.percentageNightsThisMonth}}%</strong></small>
-      </span>
+    <div class="top">
+      <div class="back-top" style="background:url('{{backTop}}') fixed no-repeat; backgrouns-size:cover;">
+      </div>
     </div>
+    <span class="lg-card text-center">
+      {{#if nextWeekShifts}}
+        <h2 class="text-center welcome animated pulse" style="background:#ff9a07">{{fa-icon "exclamation"}}</h2>
+        <h4 class="text-center toDo">You Have Shifts Next Week</h4>
+      {{else}}
+          <h2 class="text-center welcome animated pulse" style="background:#4CAF50">{{fa-icon "thumbs-up"}}</h2>
+          <h4 class="text-center toDo">No Shifts coming up!</h4>
+      {{/if}}
+      <small class="text-center">Day shifts this month: <strong>{{application.percentageDaysThisMonth}}%</strong></small>
+      <small class="text-center">Night shifts this month: <strong>{{application.percentageNightsThisMonth}}%</strong></small>
+    </span>
     <h5>Coming Up</h5>
     {{#each nextWeekShifts as |shift|}}
       {{partial "card"}}

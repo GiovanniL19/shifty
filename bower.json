@@ -19,6 +19,7 @@
     "lodash": "3.10.0",
     "fontawesome": "~4.5.0",
     "spectrum": "^1.8.0",
-    "hammer-time": "1.0.0"
+    "hammer-time": "1.0.0",
+    "fastclick": "^1.0.6"
   }
 }

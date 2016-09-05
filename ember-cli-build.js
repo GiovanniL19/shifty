@@ -6,6 +6,7 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
   });
   
+  app.import('bower_components/fastclick/lib/fastclick.js');
   app.import('bower_components/async/dist/async.js');
   app.import('bower_components/moment/moment.js');
 

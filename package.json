@@ -28,7 +28,6 @@
     "ember-cli-bootstrap-sassy": "0.5.3",
     "ember-cli-cordova": "0.1.0-beta-2",
     "ember-cli-dependency-checker": "^1.2.0",
-    "ember-cli-fastclick": "1.3.0",
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-inject-live-reload": "^1.3.1",
