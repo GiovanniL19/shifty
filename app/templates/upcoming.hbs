@@ -1,4 +1,4 @@
-<div class="upComing" style="{{if application.cardView 'padding:1em'}}">
+<div class="upComing">
   {{#liquid-if application.cardView class="slide"}}
     <div class="cards">
       {{#each model as |shift|}}
@@ -6,13 +6,12 @@
       {{else}}
         <div class="text-center nothing">
           <h1>{{fa-icon "calendar-times-o"}}</h1>
-          <h6>You have no future shifts</h6>
+          <h6>You have has no past shifts</h6>
         </div>
       {{/each}}
     </div>
-  
   {{else}}
-    {{partial "filter"}}
+    {{partial 'filter'}}
     {{partial 'calendar-view'}}
   {{/liquid-if}}
 </div>

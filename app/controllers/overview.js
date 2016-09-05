@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
   imageGenerator: function(){
     let controller = this;
     let url = '';
+    controller.set('application.loading', true);
     if(this.get('nextWeekShifts.length') >= 1){
       url = 'http://api.pexels.com/v1/search?query=working&per_page=20&page=1';
     }else{
@@ -42,6 +43,7 @@ export default Ember.Controller.extend({
       controller.set('lastWeekShifts', shifts);
       controller.store.query('shift', {when: 'next', user: controller.get('application.user.id')}).then(function(shifts){
         controller.set('nextWeekShifts', shifts);
+        controller.set('application.loading', false);
         controller.imageGenerator();
       });
     });

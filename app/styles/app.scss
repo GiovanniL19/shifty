@@ -83,32 +83,20 @@ $lightMainColour: #026da7;
     width: 90%;
     position: absolute;
     margin-left: 5%;
-    margin-top: 30%;
+    margin-top: 26%;
   }
   .card{
     padding: 1em;
-    min-height: 7.5em;
+    min-height: 8em;
     margin: 1em 0.5em;
     background: white;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.04);
     .options {
-      background: #f3f3f3;
-      height: 7.5em;
-      margin-top: -1em;
-      margin-left: 1em;
-      width: 3em;
-      position: absolute;
-      right: 0em;
-      text-align: center;
-      border-left: 2px solid #4e4e4e;
-      &:focus{
-        background: #ccc;
-        outline:0;
-      }
       a{
-        line-height: 7em;
+        line-height: 5em;
         text-align: center;
-        color: #222;
+        color: #bdbdbd;
+        margin-left: 1em;
       }
     }
     p{
@@ -165,8 +153,16 @@ $lightMainColour: #026da7;
     }
   }  
 }
+.liquid-container {
+  height: 100%;
+  overflow:scroll;
+}
 .popUpCard{
   @include cards;
+  position: fixed;
+  bottom: 1em;
+  width: 90%;
+  left: 5%;
   .card{
     margin: 0em;
     width: 100%;
@@ -218,10 +214,14 @@ $lightMainColour: #026da7;
   opacity:0.5;
   background:white;
 }
-body{
+body, html{
   font-family: 'Ubuntu', sans-serif;
   color: #6d6d6d;
   background: #f9f9f9;
+  height:100vh;
+}
+body > .ember-view {
+  height: 100%;
 }
 
 .loading {
@@ -447,6 +447,7 @@ body{
 //3.0
 //Overview
 .overview {
+  height:100%;
   padding: 1em;
   color: #6d6d6d;
   margin-top: 20em;
@@ -483,11 +484,6 @@ body{
   .cards{
     padding-top:2em;
     @include cards;
-    .card{
-      .options {
-        right:1.5em;
-      }
-    }
   }
 }
 
@@ -591,8 +587,9 @@ body{
 //5.0
 //History
 .history{
+  height:100%;
   .cards{
-    padding-top:3em;
+    padding-top:4em;
     @include cards;
   }
 }
@@ -600,19 +597,22 @@ body{
 //6.0
 //Upcoming
 .upComing{
+  height:100%;
   .cards{
-    padding-top:3em;
+    padding-top:4em;
     @include cards;
   }
 }
 //7.0
 //Settings
 .settings{
+  height:100%;
   color: #6d6d6d;
   background: white;
   padding: 1em;
   height:100%;
-  margin-top:4em;
+  padding-top:5em;
+  overflow:scroll;
   .imageUpload {
     position: relative;
     overflow: hidden;
@@ -624,7 +624,6 @@ body{
     right: 0;
     margin: 0;
     padding: 0;
-    font-size: 20px;
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0);
@@ -640,10 +639,11 @@ body{
   .btn-default{
     background-color: white;
     padding: 1em;
-    color: $mainColour;
+    color: rgba(0, 99, 153, 0.86);
     padding: 1em 2em;
-    width: 45%;
-    margin-top:1em;
+    min-width: 45%;
+    margin-top: 1em;
+    font-size: 0.8em;
     &:focus{
       outline:0;
     }
@@ -653,8 +653,9 @@ body{
     padding: 1em;
     color: white;
     padding: 1em 2em;
-    width: 45%;
+    min-width: 45%;
     margin-top:1em;
+    font-size: 0.8em;
     &:focus{
       outline:0;
     }
