@@ -5,10 +5,17 @@ export default Ember.Route.extend({
     let controller =  this.controllerFor('application');
     controller.getUser();
     
-    var online = navigator.onLine;
-    if(!online){
-      controller.set('isOffline');
-    }
+    setInterval(function(){
+      var online = navigator.onLine;
+      if(!online){
+        controller.set('isOffline', true);
+      }else{
+        if(controller.get('isOffline') === true){
+          location.reload();
+          controller.set('isOffline', false);
+        }
+      }
+    }, 3000);
     this._super();
     window.scrollTo(0,0);
   },
