@@ -43,6 +43,8 @@ export default Ember.Controller.extend({
         controller.set('nextWeekShifts', shifts);
         controller.imageGenerator();
       });
+    }, function(err){
+      controller.set('application.isOffline', true);
     });
   }.observes('application.user.id'),
   

@@ -17,5 +17,9 @@
             "PACKAGE_NAME": "com.shifty"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-connectivity-monitor": {
+            "PACKAGE_NAME": "com.shifty"
+        }
+    }
 }

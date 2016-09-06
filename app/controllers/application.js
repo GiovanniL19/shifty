@@ -194,6 +194,8 @@ export default Ember.Controller.extend({
               totalDaysWorked.push(shift.get('dateText'));
             }
           }
+        }, function(err){
+          controller.set('isOffline', true);
         });
       
         var days = controller.getDaysInMonth(parseInt(moment(new Date()).format('M')), moment(new Date()).format('YYYY'));
@@ -314,6 +316,8 @@ export default Ember.Controller.extend({
             controller.transitionToRoute('settings');
           }
         }
+      }, function(err){
+        controller.set('isOffline', true);
       });
     }
   },

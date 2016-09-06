@@ -15,7 +15,14 @@
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.shifty"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.giovannilenguito.shifty"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.giovannilenguito.shifty"
+        }
+    }
 }

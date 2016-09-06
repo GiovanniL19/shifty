@@ -14,6 +14,8 @@ export default Ember.Route.extend({
       controller.set('application.loading', false);
       
       controller.get('application').calculateShifts(controller.get('application.month.value'), controller.get('application.year'), controller.get('model'), controller);
+    }, function(err){
+      controller.set('application.isOffline', true);
     });
     this._super();
     

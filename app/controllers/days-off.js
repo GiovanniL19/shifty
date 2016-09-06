@@ -50,6 +50,8 @@ export default Ember.Controller.extend({
           nextShift();
         };
       });
+    }, function(err){
+      controller.set('application.isOffline', true);
     });
     
   }, 
