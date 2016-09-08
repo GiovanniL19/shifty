@@ -109,9 +109,11 @@
       {{/liquid-if}}
         <br>
         <button class="btn btn-default" {{action 'back'}}>Back</button> <button class="btn btn-primary" {{action 'saveShifts'}}>Save</button> 
-      <div class="tip text-center">
-        <small class="text-center">Suggestions will appear after you start adding shifts to make your life easier when adding shifts!</small>
-      </div>
+        {{#unless presets}}
+          <div class="tip text-center">
+            <small class="text-center">Suggestions will appear after you have added a few shifts!</small>
+          </div>
+        {{/unless}}
     </div>
   {{/liquid-if}}
 </div>

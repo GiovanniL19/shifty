@@ -6,13 +6,13 @@
       {{input type="password" class="form-control" value=newPassword placeholder="Password"}}
       <br><br>
     {{/if}}
-    <div class="profilePicture" style="background:url('{{application.user.identity.image}}'); background-size:cover;"></div>
+    <!--<div class="profilePicture" style="background:url('{{application.user.identity.image}}'); background-size:cover;"></div>
     <br>
     <div class="imageUpload btn btn-default">
         <span>Upload Picture</span>
         {{upload-file type="file" class="upload" accept="image/*" file=profilePicture fileSize=imageSize fileType=imageType accept="image/*;capture=camera"}}
-    </div>    
-    <br><br>
+    </div>  -->  
+    <br>
     <small>First Name</small>
     {{input type="text" class="form-control" placeholder="First Name" value=application.user.identity.firstName}}
     <br><br>

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   application: Ember.inject.controller(),
+  overview: Ember.inject.controller(),
   session: Ember.inject.service('session'),
   dates: [],
   sectionOne: true,
@@ -274,6 +275,7 @@ export default Ember.Controller.extend({
               controller.set('presetSelected', null);
               controller.transitionToRoute('overview');
             }
+            controller.get('overview').getWeekData();
             if(controller.get('presetSelected') === null){
               var newPreset = controller.store.createRecord('preset', {
                 reference: controller.get('reference'),

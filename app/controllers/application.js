@@ -317,7 +317,9 @@ export default Ember.Controller.extend({
           }
         }
       }, function(err){
-        controller.set('isOffline', true);
+        controller.get('session').invalidate();
+        controller.get("sideMenu").close();
+        controller.transitionToRoute('login');
       });
     }
   },

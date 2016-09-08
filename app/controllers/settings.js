@@ -19,6 +19,8 @@ export default Ember.Controller.extend({
     let controller  = this;
     let logout = false;  
     
+    user.set('lastModified', Date.now());
+    
     if(this.get('newPassword')){
       var md5Password = md5('j*(XY@^T%&!F%I)' + this.get('newPassword') + 'juxhUGBG@^&DF(A)');
       user.set('secure.salt', md5Password);
